@@ -1,0 +1,13 @@
+{
+  "army": {
+    "name": "string",
+    "abilities": []
+  },
+  "units": [
+    {
+      "name": "string",
+      "abilities": [],
+      "keywords": []
+    }
+  ]
+}
