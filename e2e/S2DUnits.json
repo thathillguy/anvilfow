@@ -1,0 +1,163 @@
+[{
+	"unitName":"Chaos Lord on Karkadrak",
+	"keywords": ["CHAOS", "MORTAL", "SLAVES TO DARKNESS", "MARK OF CHAOS", "EYE OF THE GODS", "HERO", "CHAOS LORD"],
+	"baseMove": 9,
+	"baseSave": 3,
+	"baseBravery": 8,
+	"baseWounds": 9,
+	"missileWeapons":[],
+	"meleeWeapons":[
+		{
+            "weaponName": "Hexed Battle-axe",
+			"range": "1\"",
+            "baseAttacks": 5,
+            "baseToHit": 3,
+            "baseToWound": 3,
+            "baseRend": 0,
+			"baseDamage": "2"
+        },
+		{
+            "weaponName": "Daemonbound Blade",
+			"range": "1\"",
+            "baseAttacks": 3,
+            "baseToHit": 3,
+            "baseToWound": 3,
+            "baseRend": -1,
+			"baseDamage": "D3"
+        },
+		{
+            "weaponName": "Tearing Horn and Claws",
+			"isMount": true,
+			"range": "1\"",
+            "baseAttacks": 3,
+            "baseToHit": 4,
+            "baseToWound": 3,
+            "baseRend": -1,
+			"baseDamage": "2"
+        },
+		{
+            "weaponName": "Battering Tail",
+			"isMount": true,
+			"range": "1\"",
+            "baseAttacks": 2,
+            "baseToHit": 4,
+            "baseToWound": 4,
+            "baseRend": 0,
+			"baseDamage": "1"
+        }],
+	"abilities":[
+		{
+			"abilityName":"Brutish Rampage",
+			"abilitySource":"Warscroll: Chaos Lord on Karkadrak",
+			"abilityShortText":"On charge, 2+ to deal D3 mortal wounds",
+			"abilityFullText":"Roll a dice for each enemy unit that is within 1\" of this model after this model makes a charge move. On a 2+, that unit suffers D3 mortal wounds.",
+			"phase":["INCHARGE"],
+			"sourceUnit":"THIS",
+			"showOn":["SOURCE"]
+		},
+		{
+			"abilityName":"Daemonbound",
+			"abilitySource":"Warscroll: Chaos Lord on Karkadrak",
+			"abilityShortText":"6 to hit = 1 additional mortal wound",
+			"abilityFullText":"If the unmodified hit roll for an attack made with a Daemonbound Blade is 6, that attack inflicts 1 mortal wound on the target in addition to any normal damage.",
+			"phase":["INCOMBAT"],
+			"sourceUnit":"THIS",
+			"showOn":["SOURCE"],
+			"effects":[
+				{
+					"effectType":"TRIGGER",
+					"triggerRollType":"HitWithName:Daemonbound Blade",
+					"triggerRollValue":"Unmodified 6",
+					"effectText":"Attack inflicts 1 mortal wound in addition to normal damage"
+				}]
+		},
+		{
+			"abilityName":"Fuelled by Carnage",
+			"abilitySource":"Warscroll: Chaos Lord on Karkadrak",
+			"abilityShortText":"At end of combat, if models were slain by Hexed Battle-axe, heal D3 wounds",
+			"abilityFullText":"At the end of the combat phase, if any enemy models were slain by wounds inflicted by this model’s Hexed Battle-axe in that phase, you can heal up to D3 wounds allocated to this model.",
+			"phase":["COMBATEND"],
+			"sourceUnit":"THIS",
+			"showOn":["SOURCE", "OVERVIEW"]
+		},
+		{
+			"abilityName":"Rune-Etched Plating",
+			"abilitySource":"Warscroll: Chaos Lord on Karkadrak",
+			"abilityShortText":"5+ Mortal Wound Ward",
+			"abilityFullText":"Roll a dice each time you allocate a mortal wound to this model. On a 5+, that mortal wound is negated.",
+			"phase":["ALL"],
+			"sourceUnit":"THIS",
+			"showOn":["SOURCE"]
+		},
+		{
+			"abilityName":"The Knights of Chaos",
+			"commandAbility": true,
+			"targetRestrictions": ["CHAOS KNIGHTS","CHAOS CHARIOTS","GOREBEAST CHARIOTS"],
+			"abilitySource":"Warscroll: Chaos Lord on Karkadrak",
+			"abilityShortText":"Reroll charge rolls and +1 to hit for a KNIGHTS or CHARIOTS unit",
+			"abilityFullText":"You can use this command ability in your hero phase. If you do so, pick 1 friendly CHAOS KNIGHTS, CHAOS CHARIOTS or GOREBEAST CHARIOTS unit wholly within 18\" of a friendly SLAVES TO DARKNESS HERO with this command ability. Until your next hero phase, you can re-roll charge rolls for that unit and add 1 to hit rolls for attacks made by that unit. The same unit cannot benefit from this command ability more than once per turn.",
+			"phase":["INHERO"],
+			"sourceUnit":"THIS",
+			"showOn":["SOURCE", "OVERVIEW"],
+			"effects":[
+				{
+					"effectType":"REROLL",
+					"stat":"charge",
+					"onlyReroll1s":false,
+					"effectText":"Reroll charge rolls"
+				},
+				{
+					"effectType":"STATMOD",
+					"stat":"toHit",
+					"modValue":1,
+					"effectText":"+1 to Hit rolls"
+				}]
+		}]
+},
+{
+	"unitName":"Fomoroid Crusher",
+	"keywords": ["CHAOS", "MORTAL", "MONSTER", "SLAVES TO DARKNESS", "FOMOROID CRUSHER"],
+	"baseMove": 6,
+	"baseSave": 5,
+	"baseBravery": 10,
+	"baseWounds": 10,
+	"missileWeapons":[
+		{
+            "weaponName": "Hurled Terrain",
+			"range": "12\"",
+            "baseAttacks": 2,
+            "baseToHit": 3,
+            "baseToWound": 3,
+            "baseRend": -1,
+			"baseDamage": "2"
+        }],
+	"meleeWeapons":[
+		{
+            "weaponName": "Crushing Fists",
+			"range": "1\"",
+            "baseAttacks": 4,
+            "baseToHit": 3,
+            "baseToWound": 3,
+            "baseRend": 0,
+			"baseDamage": "2"
+        }],
+	"abilities":[
+		{
+			"abilityName":"Rampage",
+			"abilitySource":"Warscroll: Fomoroid Crusher",
+			"abilityShortText":"On charge, roll dice equal to charge. Each 6 = 1MW",
+			"abilityFullText":"After this model makes a charge move, you can pick 1 enemy unit within 1\" of this model and roll a number of dice equal to the charge roll for that charge move. For each 6, that unit suffers 1 mortal wound.",
+			"phase":["INCHARGE"],
+			"sourceUnit":"THIS",
+			"showOn":["SOURCE"]
+		},
+		{
+			"abilityName":"Insurmountable Strength",
+			"abilitySource":"Warscroll: Fomoroid Crusher",
+			"abilityShortText":"Roll a dice for each unit with 6\" of a terrain feature 6 within 6\". 3+ = D3 mortal wounds.",
+			"abilityFullText":"In your hero phase, pick 1 terrain feature within 6\" of this model and roll a dice for each other unit within 6\" of that terrain feature. On a 3+, that unit suffers D3 mortal wounds.",
+			"phase":["INHERO"],
+			"sourceUnit":"THIS",
+			"showOn":["OVERVIEW"]
+		}]
+}]
