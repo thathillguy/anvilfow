@@ -100,7 +100,14 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.less"
+              "src/styles.less",
+              "node_modules/bootstrap/css/bootstrap.min.css",
+              "node_modules/bootstrap-icons/bootstrap-icons.css",
+              "node_modules/boxicons/css/boxicons.min.css",
+              "node_modules/quill/quill.snow.css",
+              "node_modules/quill/quill.bubble.css",
+              "node_modules/remixicon/remixicon.css",
+              "node_modules/simple-datatables/style.css"
             ],
             "scripts": []
           }
