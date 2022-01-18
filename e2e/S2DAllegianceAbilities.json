@@ -5,13 +5,13 @@
 	"abilityFullText":"You can re-roll hit rolls of 1 for attacks made with melee weapons by friendly SLAVES TO DARKNESS KHORNE units wholly within 12\" of this model.",
 	"phase":["INCOMBAT"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;KHORNE"],
+	"conditionText":"Wholly within 12\" of KHORNE hero?",
 	"effects":[
 		{
 			"effectType":"REROLL",
 			"stat":"toHit:Melee",
 			"onlyReroll1s":true,
-			"effectText":"Reroll 1s to hit with melee weapons",
-			"conditionText":"Wholly within 12\" of KHORNE hero?"
+			"effectText":"Reroll 1s to hit with melee weapons"
 		}]
 },
 {
@@ -21,13 +21,13 @@
 	"abilityFullText":"If this model is a general, add 1 to wound rolls for attacks made with melee weapons by friendly SLAVES TO DARKNESS KHORNE units wholly within 12\" of this model.",
 	"phase":["INCOMBAT"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;KHORNE"],
+	"conditionText":"Wholly within 12\" of KHORNE general?",
 	"effects":[
 		{
 			"effectType":"STATMOD",
 			"stat":"toWound:Melee",
 			"modValue":1,
-			"effectText":"+1 to Hit rolls",
-			"conditionText":"Wholly within 12\" of KHORNE general?"
+			"effectText":"+1 to Hit rolls"
 		}]
 },
 {
@@ -37,13 +37,13 @@
 	"abilityFullText":"You can re-roll save rolls of 1 for attacks that target friendly SLAVES TO DARKNESS TZEENTCH units wholly within 12\" of this model.",
 	"phase":["INSHOOT","INCOMBAT"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;TZEENTCH"],
+	"conditionText":"Wholly within 12\" of TZEENTCH hero?",
 	"effects":[
 		{
 			"effectType":"REROLL",
 			"stat":"save",
 			"onlyReroll1s":true,
-			"effectText":"Reroll 1s to save",
-			"conditionText":"Wholly within 12\" of TZEENTCH hero?"
+			"effectText":"Reroll 1s to save"
 		}]
 },
 {
@@ -61,13 +61,13 @@
 	"abilityFullText":"If the unmodified wound roll for an attack made with a melee weapon by a friendly SLAVES TO DARKNESS NURGLE unit wholly within 12\" of any friendly models with this ability is 6, add 1 to the damage inflicted by that attack.",
 	"phase":["INCOMBAT"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;NURGLE"],
+	"conditionText":"Wholly within 12\" of NURGLE hero?",
 	"effects":[
 		{
 			"effectType":"TRIGGER",
-			"triggerRollType":"Wound:Melee",
+			"stat":"toWound:Melee",
 			"triggerRollValue":"Unmodified 6",
-			"effectText":"Add 1 to the damage inflicted by that attack.",
-			"conditionText":"Wholly within 12\" of NURGLE hero?"
+			"effectText":"Add 1 to the damage inflicted by that attack."
 		}]
 },
 {
@@ -85,13 +85,13 @@
 	"abilityFullText":"If the unmodified hit roll for an attack made with a melee weapon by a friendly SLAVES TO DARKNESS SLAANESH unit wholly within 12\" of this model is 6, that attack scores 2 hits on the target instead of 1. Make a wound and save roll for each hit.",
 	"phase":["INCOMBAT"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;SLAANESH"],
+	"conditionText":"Wholly within 12\" of SLAANESH hero?",
 	"effects":[
 		{
 			"effectType":"TRIGGER",
-			"triggerRollType":"Hit:Melee",
+			"stat":"toHit:Melee",
 			"triggerRollValue":"Unmodified 6",
-			"effectText":"Attack scores 2 hits instead of 1.",
-			"conditionText":"Wholly within 12\" of SLAANESH hero?"
+			"effectText":"Attack scores 2 hits instead of 1."
 		}]
 },
 {
@@ -101,20 +101,19 @@
 	"abilityFullText":"If this model is a general, you can re-roll run and charge rolls for friendly SLAVES TO DARKNESS SLAANESH units wholly within 12\" of this model.",
 	"phase":["INMOVE", "INCHARGE"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;SLAANESH"],
+	"conditionText":"Wholly within 12\" of SLAANESH general?",
 	"effects":[
 		{
 			"effectType":"REROLL",
 			"stat":"run",
 			"onlyReroll1s":false,
-			"effectText":"Reroll run rolls",
-			"conditionText":"Wholly within 12\" of SLAANESH general?"
+			"effectText":"Reroll run rolls"
 		},
 		{
 			"effectType":"REROLL",
 			"stat":"charge",
 			"onlyReroll1s":false,
-			"effectText":"Reroll charge rolls",
-			"conditionText":"Wholly within 12\" of SLAANESH general?"
+			"effectText":"Reroll charge rolls"
 		}]
 },
 {
