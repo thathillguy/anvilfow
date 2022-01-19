@@ -66,7 +66,7 @@
 			"effects":[
 				{
 					"effectType":"TRIGGER",
-					"triggerRollType":"HitWithName:Daemonbound Blade",
+					"stat":"toHit:Daemonbound Blade",
 					"triggerRollValue":"Unmodified 6",
 					"effectText":"Attack inflicts 1 mortal wound in addition to normal damage"
 				}]
@@ -108,7 +108,7 @@
 				},
 				{
 					"effectType":"STATMOD",
-					"stat":"toHit",
+					"stat":"toHit:All",
 					"modValue":1,
 					"effectText":"+1 to Hit rolls"
 				}]
