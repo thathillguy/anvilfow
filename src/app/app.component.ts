@@ -3,6 +3,7 @@ import { UnitData } from '../types/unitData';
 import { Unit } from '../types/Unit';
 import { AbilityData } from '../types/AbilityData';
 import { Ability } from '../types/Ability';
+import { Observable } from 'rxjs';
 
 import s2dUnitData from '../../e2e/S2DUnits.json';
 import s2dAbilityData from '../../e2e/S2DAllegianceAbilities.json';
@@ -14,7 +15,6 @@ import s2dAbilityData from '../../e2e/S2DAllegianceAbilities.json';
 })
 export class AppComponent implements OnInit {
   title = 'anvilfow';
-
   ngOnInit() {
     console.log("onInit AppComponent");
     const myS2DUnitData: UnitData[] = readUnitJSON(s2dUnitData);

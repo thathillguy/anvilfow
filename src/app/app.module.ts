@@ -9,7 +9,8 @@ import { SearchbarComponent } from "./component/searchbar/searchbar.component";
 import { HomeView} from "./view/home/home.view";
 import {BannerComponent} from "./component/banner/banner.component";
 import {CarouselComponent} from "./component/carousel/carousel.component";
-
+import { StoreModule } from '@ngrx/store';
+import { armyReducer } from './store/app.reducer'
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import {CarouselComponent} from "./component/carousel/carousel.component";
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    StoreModule.forRoot(armyReducer)
   ],
   providers: [],
   bootstrap: [AppComponent]
