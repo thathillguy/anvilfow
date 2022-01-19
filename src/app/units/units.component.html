@@ -1,0 +1,9 @@
+<h2>My Army:</h2>>
+<ul class="units">
+    <li *ngFor="let unit of units"
+    [class.selected]="unit === selectedUnit"
+    (click)="onSelect(unit)">
+        <span class="badge">{{unit.unitName}}</span>
+    </li>
+</ul>
+<app-unit-detail [unit]="selectedUnit"></app-unit-detail>

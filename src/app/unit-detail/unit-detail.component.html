@@ -1,0 +1,62 @@
+<div *ngIf="unit"><h2>Warscroll:</h2>
+    <div>
+        <h1>{{unit.unitName}}</h1>
+        <p>Move: {{unit.move}}"</p>
+        <p>Save: {{unit.save}}+</p>
+        <p>Wounds: {{unit.wounds}} ({{unit.woundsTaken}} taken)</p>
+        <p>Bravery: {{unit.bravery}}</p>
+        <div *ngIf="unit.missileWeapons.length>0"
+            class="unitDetail">
+            <table>
+                <tr>
+                    <th>Missile Weapons</th> <th>Range</th> <th>Attacks</th> <th>To Hit</th> <th>To Wound</th> <th>Rend</th> <th>Damage</th>
+                </tr>
+
+                <tr *ngFor="let weapon of unit.missileWeapons">
+                    <td>{{weapon.weaponName}}</td>
+                    <td>{{weapon.range}}"</td>
+                    <td [ngClass]="{'modified': weapon.attacksEffects.length>0}"
+                        (click)="onSelect(weapon.baseAttacks, weapon.attacks, weapon.attacksEffects)">{{weapon.attacks}}</td>
+                    <td [ngClass]="{'modified': weapon.hitEffects.length>0}"
+                        (click)="onSelect(weapon.baseToHit, weapon.toHit, weapon.hitEffects)">{{weapon.toHit}}+</td>
+                    <td [ngClass]="{'modified': weapon.woundEffects.length>0}"
+                        (click)="onSelect(weapon.baseToWound, weapon.toWound, weapon.woundEffects)">{{weapon.toWound}}+</td>
+                    <td [ngClass]="{'modified': weapon.rendEffects.length>0}"
+                        (click)="onSelect(weapon.baseRend, weapon.rend, weapon.rendEffects)">{{weapon.rend}}</td>
+                    <td [ngClass]="{'modified': weapon.damageEffects.length>0}"
+                        (click)="onSelect(weapon.baseDamage, weapon.damage, weapon.damageEffects)">{{weapon.damage}}</td>
+                </tr>
+            </table>
+        </div>
+        <div *ngIf="unit.meleeWeapons.length>0"
+            class="unitDetail">
+            <table>
+                <tr>
+                    <th>Melee Weapons</th> <th>Range</th> <th>Attacks</th> <th>To Hit</th> <th>To Wound</th> <th>Rend</th> <th>Damage</th>
+                </tr>
+
+                <tr *ngFor="let weapon of unit.meleeWeapons">
+                    <td>{{weapon.weaponName}}</td>
+                    <td>{{weapon.range}}"</td>
+                    <td [ngClass]="{'modified': weapon.attacksEffects.length>0}"
+                        (click)="onSelect(weapon.baseAttacks, weapon.attacks, weapon.attacksEffects)">{{weapon.attacks}}</td>
+                    <td [ngClass]="{'modified': weapon.hitEffects.length>0}"
+                        (click)="onSelect(weapon.baseToHit, weapon.toHit, weapon.hitEffects)">{{weapon.toHit}}+</td>
+                    <td [ngClass]="{'modified': weapon.woundEffects.length>0}"
+                        (click)="onSelect(weapon.baseToWound, weapon.toWound, weapon.woundEffects)">{{weapon.toWound}}+</td>
+                    <td [ngClass]="{'modified': weapon.rendEffects.length>0}"
+                        (click)="onSelect(weapon.baseRend, weapon.rend, weapon.rendEffects)">{{weapon.rend}}</td>
+                    <td [ngClass]="{'modified': weapon.damageEffects.length>0}"
+                        (click)="onSelect(weapon.baseDamage, weapon.damage, weapon.damageEffects)">{{weapon.damage}}</td>
+                </tr>
+            </table>
+        </div>
+        <div *ngIf=selectedStatBase>
+            <p *ngFor="let effect of selectedStatEffects">{{effect.effectText}}</p>
+        </div>
+        <div *ngIf="unit.abilities.length>0">
+            <app-ability-detail *ngFor="let ability of unit.abilities"
+            [ability]="ability"></app-ability-detail>
+        </div>
+    </div>
+</div>

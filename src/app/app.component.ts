@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     console.log("onInit AppComponent");
-    const myS2DUnitData: UnitData[] = readUnitJSON(s2dUnitData);
+    const myS2DUnitData: UnitData[] = AppComponent.readUnitJSON(s2dUnitData);
     const myS2DAbilityData: AbilityData[] = readAbilityJSON(s2dAbilityData);
 
     const myUnits = new Array<Unit>();
@@ -102,11 +102,11 @@ export class AppComponent implements OnInit {
     printAbilities("--In the Battleshock Phase--", phaseInBattleshockAbilities);
     printAbilities("--End of the Battleshock Phase--", phaseBattleshockEndAbilities);
   }
-}
 
-function readUnitJSON(jsonToRead: any): UnitData[] {
-  const unitData: UnitData[] = <UnitData[]>jsonToRead;
-  return unitData;
+  static readUnitJSON(jsonToRead: any): UnitData[] {
+    const unitData: UnitData[] = <UnitData[]>jsonToRead;
+    return unitData;
+  }
 }
 
 function readAbilityJSON(jsonToRead: any): AbilityData[] {

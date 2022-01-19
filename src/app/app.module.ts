@@ -6,12 +6,18 @@ import { AppComponent } from './app.component';
 import {HeaderComponent} from "./component/header/header.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {SearchbarComponent} from "./component/searchbar/searchbar.component";
+import { UnitDetailComponent } from './unit-detail/unit-detail.component';
+import { UnitsComponent } from './units/units.component';
+import { AbilityDetailComponent } from './ability-detail/ability-detail.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    SearchbarComponent
+    SearchbarComponent,
+    UnitDetailComponent,
+    UnitsComponent,
+    AbilityDetailComponent
   ],
   imports: [
     BrowserModule,
