@@ -21,8 +21,8 @@ import { AbilityDetailComponent } from './ability-detail/ability-detail.componen
     SearchbarComponent,
     HomeView,
     BannerComponent,
-    CarouselComponent.
-	UnitDetailComponent,
+    CarouselComponent,
+	  UnitDetailComponent,
     UnitsComponent,
     AbilityDetailComponent
   ],
