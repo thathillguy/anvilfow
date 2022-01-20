@@ -1,6 +1,6 @@
 import { ReadKeyExpr } from '@angular/compiler';
 import { of } from 'rxjs';
-import { UnitData } from '../types/unitData';
+import { UnitData } from '../types/UnitData';
 import { Ability } from './Ability';
 import { Effect } from './Effect';
 import { Weapon } from './Weapon';
@@ -106,7 +106,7 @@ export class Unit {
     // If parameter add is true, we add. Else, we remove.
     addOrRemoveEffect(newEffect: Effect, add: boolean) {
         //Get the stat being affected. If it's a unit-based stat, just use it.
-        //Ex: move, save, bravery, wounds, run, charge 
+        //Ex: move, save, bravery, wounds, run, charge
         //If it's a weapon-based stat, it'll have a colon and it will designate what type of weapon it affects
         //Ex: [attacks, toHit, toWound, rend, damage]:[All, Melee, Missile, WeaponName]
 
@@ -137,7 +137,7 @@ export class Unit {
                     }
                 }
                 break;
-            
+
             case "save":
                 if(add) {
                     this.addEffectToArray(newEffect, this.saveEffects);
@@ -330,7 +330,7 @@ Move: ${this.move}\"${this.modifiedMark("move")}
 Save: ${this.save}+${this.modifiedMark("save")}
 Bravery: ${this.bravery}${this.modifiedMark("bravery")}
 `;
-        
+
         if(this.missileWeapons.length > 0){
             returnString = returnString.concat(`MISSILE WEAPONS           Range|Attacks|To Hit|To Wound|Rend|Damage
 `);

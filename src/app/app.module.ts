@@ -11,6 +11,9 @@ import {BannerComponent} from "./component/banner/banner.component";
 import {CarouselComponent} from "./component/carousel/carousel.component";
 import { StoreModule } from '@ngrx/store';
 import { armyReducer } from './store/app.reducer'
+import { UnitDetailComponent } from './component/unit-detail/unit-detail.component';
+import { UnitsComponent } from './component/units/units.component';
+import { AbilityDetailComponent } from './component/ability-detail/ability-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,10 @@ import { armyReducer } from './store/app.reducer'
     SearchbarComponent,
     HomeView,
     BannerComponent,
-    CarouselComponent
+    CarouselComponent,
+	  UnitDetailComponent,
+    UnitsComponent,
+    AbilityDetailComponent
   ],
   imports: [
     BrowserModule,
