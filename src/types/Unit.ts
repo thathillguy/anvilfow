@@ -5,7 +5,9 @@ import { Ability } from './Ability';
 import { Effect } from './Effect';
 import { Weapon } from './Weapon';
 
-export class Unit {
+
+export class Unit implements UnitData{
+    type= "Unit"
     unitName: string;
     keywords: string[];
 
