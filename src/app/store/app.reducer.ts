@@ -27,18 +27,19 @@ const initialState: ArmyState = {
 
 const loadAllUnitsSuccessHandler = (state: ArmyState, action: any) => {
   console.log("HERE: ", action)
-  return {...state, allUnits: action.units}
+  return {...state, allUnits: [...action.units]}
 }
-const loadAllAbilitiesHandler = (state: ArmyState) => {
-  return state
+const loadAllAbilitesSuccessHandler = (state: ArmyState, action: any) => {
+  console.log("HERE: ", action)
+  return {...state, allAbilities: [...action.abilities]}
 }
 const enableAbilityToSelectedUnitHandler = (state: ArmyState, {targetAbility, newStatus} : {targetAbility: Ability, newStatus: boolean}) => {
-  return state
+  return {...state}
 }
 export const armyReducer = createReducer(
   initialState,
   on(loadAllUnitsSuccess, loadAllUnitsSuccessHandler),
-  on(loadAllAbilities, loadAllAbilitiesHandler),
+  on(loadAllAbilities, loadAllAbilitesSuccessHandler),
   on(enableAbilityToSelectedUnit, enableAbilityToSelectedUnitHandler),
 );
 

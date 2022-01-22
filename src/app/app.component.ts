@@ -4,9 +4,10 @@ import { Unit } from '../types/Unit';
 import { AbilityData } from '../types/AbilityData';
 import { Ability } from '../types/Ability';
 import { Observable } from 'rxjs';
-import {Store} from "@ngrx/store";
+import {select, Store} from "@ngrx/store";
 import {ArmyState} from "./store/app.reducer";
 import {loadAllUnits} from "./store/app.actions";
+import {AppState, selectAllUnits} from "./store/app.selector";
 
 @Component({
   selector: 'app-root',
@@ -16,10 +17,13 @@ import {loadAllUnits} from "./store/app.actions";
 export class AppComponent implements OnInit {
   title = 'anvilfow';
   allUnitData$: Observable<UnitData[]>
-  allAbilityData$: Observable<AbilityData[]>
-  constructor(private store: Store<ArmyState>) {
-    this.allUnitData$ = store.select('allUnits');
-    this.allAbilityData$ = store.select('allAbilities');
+  constructor(private store: Store<AppState>) {
+    this.allUnitData$ = store.pipe(
+      select(selectAllUnits),
+    )
+    this.allUnitData$.subscribe(
+      data => {console.log("YO", data)}
+    )
   }
   ngOnInit() {
     console.log("onInit AppComponent");

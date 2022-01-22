@@ -10,7 +10,7 @@ import { UnitData } from '../../../types/UnitData';
 
 export class UnitsComponent implements OnInit {
 
-  @Input() units: UnitData[] = [];
+  @Input() units: UnitData[] | null = [];
   selectedUnit?: Unit;
 
   constructor() {
