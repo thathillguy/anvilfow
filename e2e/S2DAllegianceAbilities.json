@@ -27,7 +27,7 @@
 			"effectType":"STATMOD",
 			"stat":"toWound:Melee",
 			"modValue":1,
-			"effectText":"+1 to Hit rolls"
+			"effectText":"+1 to Wound rolls"
 		}]
 },
 {

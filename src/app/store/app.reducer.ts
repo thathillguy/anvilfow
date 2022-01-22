@@ -1,17 +1,22 @@
 import {Action, createReducer, on,} from '@ngrx/store';
 import {Unit} from "../../types/Unit";
-import {enableAbilityToSelectedUnit, loadAllUnits} from "./app.actions";
+import {enableAbilityToSelectedUnit, loadAllUnits, selectUnit} from "./app.actions";
 import {UnitData} from "../../types/UnitData";
 import {Ability} from "../../types/Ability";
+import { AbilityHelper } from '../../types/AbilityHelper';
 
-interface ArmyState {
+export interface ArmyState {
   allUnits: UnitData[],
   armyUnits: Unit[],
   selectedUnit: Unit | null,
   modalData: any
 }
 
-const initialState: ArmyState = {
+export interface AppState {
+  army: ArmyState
+}
+
+export const initialState: ArmyState = {
   allUnits: [],
   armyUnits: [],
   selectedUnit: null,
@@ -21,16 +26,30 @@ const initialState: ArmyState = {
 const loadAllUnitsHandler = (state: ArmyState) => {
   return state
 }
-const enableAbilityToSelectedUnitHandler = (state: ArmyState, {targetAbility, newStatus} : {targetAbility: Ability, newStatus: boolean}) => {
-  return state
+
+const selectUnitHandler = (state: ArmyState, {selectedUnit} : {selectedUnit: Unit}) => {
+  console.log("selectUnitHandler");
+  return {...state, selectedUnit: selectedUnit};
 }
-const _armyReducer = createReducer(
+
+const enableAbilityToSelectedUnitHandler = (state: ArmyState, {targetAbility, newStatus} : {targetAbility: Ability, newStatus: boolean}) => {
+  console.log("enableAbilityToSelectedUnitHandler");
+  if(state.selectedUnit) {
+    console.log("setAbilityStatus");
+    let newSelectedUnit = AbilityHelper.setAbilityStatus(state.selectedUnit, targetAbility, newStatus);
+    return {...state, selectedUnit: newSelectedUnit}
+  }
+  return {...state}
+}
+
+export const armyReducer = createReducer(
   initialState,
   on(loadAllUnits, loadAllUnitsHandler),
+  on(selectUnit, selectUnitHandler),
   on(enableAbilityToSelectedUnit, enableAbilityToSelectedUnitHandler)
 );
 
 
-export function armyReducer(state: ArmyState, action: Action) {
+/*export function armyReducer(state: ArmyState, action) {
   return _armyReducer(state, action);
-}
+}*/

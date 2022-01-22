@@ -1,1 +1,9 @@
-<p *ngIf="ability">{{ability.abilityName}}: {{ability.abilityFullText}}</p>
+<div *ngIf="ability">
+    <div *ngIf="ability.conditionText">
+        <input type="checkbox"
+        (click)="abilityToggle()"> {{ability.conditionText}}
+    </div>
+    
+    {{ability.abilityName}}: {{ability.abilityFullText}}
+
+</div>

@@ -7,6 +7,9 @@ import { Observable } from 'rxjs';
 
 import s2dUnitData from '../../e2e/S2DUnits.json';
 import s2dAbilityData from '../../e2e/S2DAllegianceAbilities.json';
+import { Store } from '@ngrx/store';
+import {AppState, ArmyState} from "./store/app.reducer";
+import { selectActiveUnit } from './store/app.selector';
 
 @Component({
   selector: 'app-root',
@@ -17,8 +20,8 @@ export class AppComponent implements OnInit {
   title = 'anvilfow';
   ngOnInit() {
     console.log("onInit AppComponent");
-    const myS2DUnitData: UnitData[] = AppComponent.readUnitJSON(s2dUnitData);
-    const myS2DAbilityData: AbilityData[] = readAbilityJSON(s2dAbilityData);
+    /*const myS2DUnitData: UnitData[] = AppComponent.readUnitJSON(s2dUnitData);
+    const myS2DAbilityData: AbilityData[] = AppComponent.readAbilityJSON(s2dAbilityData);
 
     const myUnits = new Array<Unit>();
     const myKarkadrak = new Unit(myS2DUnitData[0]);
@@ -26,8 +29,8 @@ export class AppComponent implements OnInit {
     const myFomoroid = new Unit(myS2DUnitData[1]);
     myUnits.push(myFomoroid);
 
-    console.log("Initial");
-    console.log(myKarkadrak.warscroll());
+    console.log("Initial");*/
+    /*console.log(myKarkadrak.warscroll());
 
     const armyAbilities = Ability.createAbilityListFromData(myS2DAbilityData);
     const khorneAura = Ability.findAbilityByName("Aura of Khorne", armyAbilities);
@@ -100,18 +103,28 @@ export class AppComponent implements OnInit {
     printAbilities("--End of the Charge Phase--", phaseCombatEndAbilities);
     printAbilities("--Start of the Battleshock Phase--", phaseBattleshockStartAbilities);
     printAbilities("--In the Battleshock Phase--", phaseInBattleshockAbilities);
-    printAbilities("--End of the Battleshock Phase--", phaseBattleshockEndAbilities);
+    printAbilities("--End of the Battleshock Phase--", phaseBattleshockEndAbilities);*/
   }
+
+  //allUnitData$: Observable<UnitData[]>
+
+ selectedUnit$: Observable<Unit | null>;
+
+constructor(private store: Store<AppState>) {
+  //this.allUnitData$ = store.select('allUnits');
+  this.selectedUnit$ = store.select(selectActiveUnit);
+  this.selectedUnit$.subscribe(unit => {console.log(`App Top Level: Subscribed to ${unit}`)});
+}
 
   static readUnitJSON(jsonToRead: any): UnitData[] {
     const unitData: UnitData[] = <UnitData[]>jsonToRead;
     return unitData;
   }
-}
 
-function readAbilityJSON(jsonToRead: any): AbilityData[] {
-  const abilityData: AbilityData[] = <AbilityData[]>jsonToRead;
-  return abilityData;
+  static readAbilityJSON(jsonToRead: any): AbilityData[] {
+    const abilityData: AbilityData[] = <AbilityData[]>jsonToRead;
+    return abilityData;
+  }
 }
 
 function printAbilities(title: string, abilities: Ability[]){

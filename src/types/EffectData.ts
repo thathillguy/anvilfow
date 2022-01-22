@@ -3,6 +3,6 @@ export interface EffectData {
     stat: string;
     modValue?: number;
     onlyReroll1s?: boolean;
-    triggerRoleValue?: string;
+    triggerRollValue?: string;
     effectText: string;
 }

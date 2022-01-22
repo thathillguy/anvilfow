@@ -10,6 +10,6 @@
 <div class="container-fluid">
   <toolbar></toolbar>
   <!-- <home></home> -->
-  <app-units></app-units>
+  <app-units [selectedUnit]="selectedUnit$ | async"></app-units>
 </div>
 <router-outlet></router-outlet>
