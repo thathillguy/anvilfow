@@ -17,33 +17,41 @@ import { AbilityHelper } from '../../../types/AbilityHelper';
   templateUrl: './units.component.html',
   styleUrls: ['./units.component.less']
 })
+
 export class UnitsComponent implements OnInit {
 
-  units: Unit[] = new Array<Unit>();
+  @Input() units: UnitData[] | null = [];
+  myUnits: Unit[] = new Array<Unit>();
   @Input() selectedUnit: Unit | null = null;
 
+  loadedUnits: boolean = false;
+
   constructor(private store: Store) {
+    console.log(`UnitsComponent Constructor: units is ${this.units}`);
 
-    const myS2DUnitData: UnitData[] = AppComponent.readUnitJSON(s2dUnitData);
-    const myKark: Unit = ObjectFactory.createUnitFromData(myS2DUnitData[0]);
-    this.units.push(myKark);
-    this.units.push(ObjectFactory.createUnitFromData(myS2DUnitData[1]));
+    //const myS2DUnitData: UnitData[] = AppComponent.readUnitJSON(s2dUnitData);
 
-    const myS2DAbilityData: AbilityData[] = AppComponent.readAbilityJSON(s2dAbilityData);
+    /*const myS2DAbilityData: AbilityData[] = AppComponent.readAbilityJSON(s2dAbilityData);
     const armyAbilities = AbilityHelper.createAbilityListFromData(myS2DAbilityData);
     const khorneGeneralAura = AbilityHelper.findAbilityByName("Aura of Khorne (General)", armyAbilities);
     if(khorneGeneralAura) {
       AbilityHelper.addAbilityToUnit(khorneGeneralAura, myKark);
-    }
+    }*/
 
   }
 
   ngOnInit(): void {
-
+    //console.log(this.units)
   }
 
   ngOnChanges() : void {
-    console.log(` ngOnChanges in units: ${this.selectedUnit}`)
+    console.log(` ngOnChanges in UnitsComponent: units is ${this.units}`)
+    if(this.units && !this.loadedUnits){
+      const myKark: Unit = ObjectFactory.createUnitFromData(this.units[0]);
+      this.myUnits.push(myKark);
+      this.myUnits.push(ObjectFactory.createUnitFromData(this.units[1]));
+      this.loadedUnits = true;
+    }
   }
 
   onSelect(unit: Unit) {

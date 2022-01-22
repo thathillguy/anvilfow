@@ -16,6 +16,9 @@ import { armyReducer } from './store/app.reducer'
 import { UnitDetailComponent } from './component/unit-detail/unit-detail.component';
 import { UnitsComponent } from './component/units/units.component';
 import { AbilityDetailComponent } from './component/ability-detail/ability-detail.component';
+import {EffectsModule} from "@ngrx/effects";
+import {UnitsEffects} from "./effects/units.effects";
+import {UnitService} from "./service/json.service";
 
 @NgModule({
   declarations: [
@@ -35,9 +38,12 @@ import { AbilityDetailComponent } from './component/ability-detail/ability-detai
     AppRoutingModule,
     BrowserAnimationsModule,
     StoreModule.forRoot({army: armyReducer}),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([UnitsEffects])
   ],
-  providers: [],
+  providers: [
+    UnitService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
