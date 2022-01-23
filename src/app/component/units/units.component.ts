@@ -22,7 +22,7 @@ export class UnitsComponent implements OnInit {
 
   @Input() units: UnitData[] | null = [];
   myUnits: Unit[] = new Array<Unit>();
-  @Input() selectedUnit: Unit | null = null;
+  @Input() activeUnit: Unit | null = null;
 
   loadedUnits: boolean = false;
 
@@ -49,6 +49,7 @@ export class UnitsComponent implements OnInit {
     if(this.units && !this.loadedUnits){
       const myKark: Unit = ObjectFactory.createUnitFromData(this.units[0]);
       this.myUnits.push(myKark);
+      console.log(`Loaded a Karkadrak? ${JSON.stringify(this.myUnits)}`)
       this.myUnits.push(ObjectFactory.createUnitFromData(this.units[1]));
       this.loadedUnits = true;
     }

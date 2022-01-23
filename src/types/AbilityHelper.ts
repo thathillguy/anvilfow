@@ -48,18 +48,20 @@ export class AbilityHelper {
     }
 
     //Adds a given ability to the given unit. Used for both the unit's own abilities, and external army abilities
-    static addAbilityToUnit(newAbility: Ability, unit: Unit) {
-        unit.abilities.push(newAbility);
+    static addAbilityToUnit(newAbility: Ability, unit: Unit) : Unit {
+        let newUnit: Unit = {...unit};
+        newUnit.abilities.push(newAbility);
         if(newAbility.isActive) {
             for (const effect of newAbility.effects) {
-                AbilityHelper.addOrRemoveEffect(unit, effect, true);
+                newUnit = AbilityHelper.addOrRemoveEffect(newUnit, effect, true);
             }
         }
+        return newUnit;
     }
     
     //Enable or disable abilities
     static setAbilityStatus(unit: Unit, targetAbility: Ability, newStatus: boolean) : Unit {
-        //let newUnit: Unit = {...unit};
+        let newUnit: Unit = {...unit};
         //first, find the ability in question
         let newAbilities: Ability[] = [];
         for (let i = 0; i < unit.abilities.length; i++) {
@@ -71,13 +73,14 @@ export class AbilityHelper {
                     return unit;
                 }
                 for (const effect of ability.effects) {
-                    unit = this.addOrRemoveEffect(unit, effect, newStatus);
+                    newUnit = this.addOrRemoveEffect(newUnit, effect, newStatus);
                 }
             }
             newAbilities.push(newAbility);
         }
-        unit = {...unit, abilities: newAbilities};
-        return unit;
+        console.log(`setAbilityStatus 111 ${JSON.stringify(newUnit)}`);
+        newUnit = {...newUnit, abilities: newAbilities};
+        return newUnit;
     }
     
     //Take an Effect and apply it: add it to the appropriate stat's effect list, and modify any relevant values
@@ -179,6 +182,8 @@ export class AbilityHelper {
                 break;
         }
 
+        console.log(`addOrRemoveEffect about to return: ${JSON.stringify(newUnit)}`);
+
         return newUnit;
     }
 
@@ -214,6 +219,8 @@ export class AbilityHelper {
         newUnit.missileWeapons = newMissileWeapons;
         newUnit.meleeWeapons = newMeleeWeapons;
 
+        console.log(`addOrRemoveWeaponEffects about to return ${JSON.stringify(newUnit)}`)
+
         return newUnit;
     }
 
@@ -241,7 +248,7 @@ export class AbilityHelper {
                     //newWeapon.hitEffects = AbilityHelper.addEffectToArray(newEffect, weapon.hitEffects);
                     console.log(`add hit effect before: ${newWeapon.hitEffects}`);
                     newWeapon = {...weapon, hitEffects: this.addEffectToArray(newEffect, weapon.hitEffects)}
-                    console.log(`add hit effect after: ${newWeapon.hitEffects}`);
+                    console.log(`add hit effect after: ${JSON.stringify(newWeapon.hitEffects)}`);
                     if(newEffect.effectType === "STATMOD" && newEffect.modValue) {
                         //A +1 to hit actually takes a 4+ to hit to a 3+ to hit (also, cap at +/- 1 from base)
                         newWeapon.toHit -= newEffect.modValue as number;
@@ -309,6 +316,8 @@ export class AbilityHelper {
                 }
                 break;
         }
+
+        console.log(`addOrRemoveWeaponEffect about to return ${JSON.stringify(newWeapon)}`)
 
         return newWeapon;
     }

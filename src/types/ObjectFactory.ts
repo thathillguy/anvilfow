@@ -2,34 +2,12 @@ import { Ability } from "./Ability";
 import { AbilityData } from "./AbilityData";
 import { AbilityHelper } from "./AbilityHelper";
 import { Effect } from "./Effect";
-import { EffectData } from "./EffectData";
 import { Unit } from "./Unit";
 import { UnitData } from "./UnitData";
 import { Weapon } from "./Weapon";
 import { WeaponData } from "./WeaponData";
 
 export class ObjectFactory {
-
-    static createEffect() : Effect {
-        let effect: Effect = {effectType: "", stat: "", effectText: ""};
-        return effect;
-    }
-
-    static createEffectFromData(data: EffectData): Effect {
-        let newEffect: Effect = ObjectFactory.createEffect();
-        newEffect.effectType = data.effectType;
-        newEffect.stat = data.stat;
-        newEffect.effectText = data.effectText;
-    
-        if(data.effectType === "TRIGGER") {
-            newEffect.triggerRollValue = data.triggerRollValue;
-        } else if (data.effectType === "REROLL") {
-            newEffect.onlyReroll1s = data.onlyReroll1s;
-        } else if (data.effectType === "STATMOD") {
-            newEffect.modValue = data.modValue;
-        }
-        return newEffect;
-    }
 
     static createAbility() : Ability {
         let ability: Ability = {
@@ -77,11 +55,9 @@ export class ObjectFactory {
         }
 
         newAbility.effects = new Array<Effect>();
-        console.log(`Ability Constructor: effects ${data.effects}`);
         if(data.effects) {
-            console.log(`Ability Constructor: effects ${data.effects.length}`);
             for(let i = 0; i < data.effects.length; i++){
-                newAbility.effects.push(ObjectFactory.createEffectFromData(data.effects[i]));
+                newAbility.effects.push(data.effects[i]);
             }
         }
         return newAbility;
@@ -211,7 +187,7 @@ export class ObjectFactory {
         for (const ability of data.abilities) {
             let newAbility: Ability = ObjectFactory.createAbilityFromData(ability);
             //apply all effects that this unit grants to itself
-            AbilityHelper.addAbilityToUnit(newAbility, newUnit);
+            newUnit = AbilityHelper.addAbilityToUnit(newAbility, newUnit);
         }
 
         return newUnit;

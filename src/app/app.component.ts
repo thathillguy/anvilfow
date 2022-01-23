@@ -18,6 +18,7 @@ import { selectActiveUnit, selectAllUnits } from './store/app.selector';
 export class AppComponent implements OnInit {
   title = 'anvilfow';
   allUnitData$: Observable<UnitData[]>
+  activeUnit$: Observable<Unit | null>;
 
   constructor(private store: Store<AppState>) {
     this.allUnitData$ = store.pipe(
@@ -27,8 +28,8 @@ export class AppComponent implements OnInit {
       data => {console.log("YO", data)}
     )
 
-    this.selectedUnit$ = store.select(selectActiveUnit);
-    this.selectedUnit$.subscribe(unit => {console.log(`App Top Level: Subscribed to ${unit}`)});
+    this.activeUnit$ = store.select(selectActiveUnit);
+    this.activeUnit$.subscribe(unit => {console.log(`App Top Level: Subscribed to ${unit}`)});
   }
 
   ngOnInit() {
@@ -38,19 +39,6 @@ export class AppComponent implements OnInit {
 
   }
 
-  //allUnitData$: Observable<UnitData[]>
-
- selectedUnit$: Observable<Unit | null>;
-
-  static readUnitJSON(jsonToRead: any): UnitData[] {
-    const unitData: UnitData[] = <UnitData[]>jsonToRead;
-    return unitData;
-  }
-
-  static readAbilityJSON(jsonToRead: any): AbilityData[] {
-    const abilityData: AbilityData[] = <AbilityData[]>jsonToRead;
-    return abilityData;
-  }
 }
 
 function printAbilities(title: string, abilities: Ability[]){

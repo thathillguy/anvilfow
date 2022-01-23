@@ -1,4 +1,4 @@
-import { EffectData } from "./EffectData";
+import { Effect } from "./Effect";
 
 export interface AbilityData {
     abilityName: string;
@@ -11,5 +11,5 @@ export interface AbilityData {
     sourceUnit?: string;
     showOn: string[];
     conditionText?: string;
-    effects: EffectData[];
+    effects: Effect[];
 }
