@@ -6,7 +6,7 @@ import { Ability } from '../types/Ability';
 import { Observable } from 'rxjs';
 import {select, Store} from "@ngrx/store";
 import {AppState, ArmyState} from "./store/app.reducer";
-import {loadAllUnits} from "./store/app.actions";
+import {loadAllUnits, loadAllAbilities} from "./store/app.actions";
 import { selectActiveUnit, selectAllUnits } from './store/app.selector';
 
 
@@ -34,6 +34,7 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     console.log("onInit AppComponent");
     this.store.dispatch(loadAllUnits())
+    this.store.dispatch(loadAllAbilities())
 
   }
 

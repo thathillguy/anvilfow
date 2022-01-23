@@ -12,8 +12,8 @@ export const loadAllUnitsSuccess = createAction(LOAD_ALL_UNITS_SUCCESS,  props<{
 export const loadAllUnitsFailure = createAction(LOAD_ALL_UNITS_FAILURE);
 
 export const LOAD_ALL_ABILITIES = '[All] Load Abilities';
-export const LOAD_ALL_ABILITIES_SUCCESS = '[All] Load Army Success';
-export const LOAD_ALL_ABILITIES_FAILURE = '[All] Load Army  Failures';
+export const LOAD_ALL_ABILITIES_SUCCESS = '[All] Load Abilities Success';
+export const LOAD_ALL_ABILITIES_FAILURE = '[All] Load Abilities Failures';
 export const loadAllAbilities = createAction(LOAD_ALL_ABILITIES);
 export const loadAllAbilitiesSuccess = createAction(LOAD_ALL_ABILITIES_SUCCESS,  props<{ units: AbilityData[]}>());
 export const loadAllAbilitiesFailure = createAction(LOAD_ALL_ABILITIES_FAILURE);

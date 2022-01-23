@@ -1,6 +1,6 @@
 import {Action, createReducer, on,} from '@ngrx/store';
 import {Unit} from "../../types/Unit";
-import {enableAbilityToSelectedUnit, loadAllAbilities, loadAllUnits, loadAllUnitsSuccess, selectUnit} from "./app.actions";
+import {enableAbilityToSelectedUnit, loadAllAbilities, loadAllAbilitiesSuccess, loadAllUnits, loadAllUnitsSuccess, selectUnit} from "./app.actions";
 import {UnitData} from "../../types/UnitData";
 import {Ability} from "../../types/Ability";
 import { AbilityHelper } from '../../types/AbilityHelper';
@@ -30,23 +30,23 @@ export const initialState: ArmyState = {
 }
 
 const loadAllUnitsSuccessHandler = (state: ArmyState, action: any) => {
-  console.log("HERE: ", action)
+  console.log("In loadAllUnitsSuccessHandler: ", action)
   return {...state, allUnits: [...action.units]}
 }
 const loadAllAbilitesSuccessHandler = (state: ArmyState, action: any) => {
-  console.log("HERE: ", action)
+  console.log("In loadAllAbilitesSuccessHandler: ", action)
   return {...state, allAbilities: [...action.abilities]}
 }
 
 const selectUnitHandler = (state: ArmyState, {selectedUnit} : {selectedUnit: Unit}) => {
-  console.log("selectUnitHandler");
+  console.log("In selectUnitHandler");
   return {...state, selectedUnit: selectedUnit};
 }
 
 const enableAbilityToSelectedUnitHandler = (state: ArmyState, {targetAbility, newStatus} : {targetAbility: Ability, newStatus: boolean}) => {
-  console.log("enableAbilityToSelectedUnitHandler");
+  console.log("In enableAbilityToSelectedUnitHandler");
   if(state.selectedUnit) {
-    console.log("setAbilityStatus");
+    console.log("calling setAbilityStatus");
     let newSelectedUnit = AbilityHelper.setAbilityStatus(state.selectedUnit, targetAbility, newStatus);
     return {...state, selectedUnit: newSelectedUnit}
   }
@@ -60,7 +60,7 @@ const enableAbilityToSelectedUnitHandler = (state: ArmyState, {targetAbility, ne
 export const armyReducer = createReducer(
   initialState,
   on(loadAllUnitsSuccess, loadAllUnitsSuccessHandler),
-  on(loadAllAbilities, loadAllAbilitesSuccessHandler),
+  on(loadAllAbilitiesSuccess, loadAllAbilitesSuccessHandler),
   on(selectUnit, selectUnitHandler),
   on(enableAbilityToSelectedUnit, enableAbilityToSelectedUnitHandler),
 );
