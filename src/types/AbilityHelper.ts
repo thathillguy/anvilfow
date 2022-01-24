@@ -18,6 +18,7 @@ export class AbilityHelper {
     static findAbilityByName(name: string, abilityList: Ability[]): Ability | null {
         let foundAbility: Ability | null = null;
 
+        console.log(`In findAbilityByName, there are ${abilityList.length} items`);
         for (const element of abilityList) {
             if(name === element.abilityName) {
                 foundAbility = element;

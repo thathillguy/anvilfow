@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 import {select, Store} from "@ngrx/store";
 import {AppState, ArmyState} from "./store/app.reducer";
 import {loadAllUnits, loadAllAbilities} from "./store/app.actions";
-import { selectActiveUnit, selectAllUnits } from './store/app.selector';
+import { selectActiveUnit, selectAllAbilities, selectAllUnits } from './store/app.selector';
 
 
 @Component({
@@ -18,9 +18,11 @@ import { selectActiveUnit, selectAllUnits } from './store/app.selector';
 export class AppComponent implements OnInit {
   title = 'anvilfow';
   allUnitData$: Observable<UnitData[]>
+  allAbilityData$: Observable<AbilityData[]>
   activeUnit$: Observable<Unit | null>;
 
   constructor(private store: Store<AppState>) {
+    //Select and subscribe for Unit Data
     this.allUnitData$ = store.pipe(
       select(selectAllUnits),
     )
@@ -28,6 +30,15 @@ export class AppComponent implements OnInit {
       data => {console.log("YO", data)}
     )
 
+    //Select and subscribe for Ability Data
+    this.allAbilityData$ = store.pipe(
+      select(selectAllAbilities),
+    )
+    this.allAbilityData$.subscribe(
+      data => {console.log("YO2", data)}
+    )
+
+    //Select and subscribe for Active Unit
     this.activeUnit$ = store.select(selectActiveUnit);
     this.activeUnit$.subscribe(unit => {console.log(`App Top Level: Subscribed to ${unit}`)});
   }

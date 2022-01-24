@@ -21,8 +21,12 @@ import { AbilityHelper } from '../../../types/AbilityHelper';
 export class UnitsComponent implements OnInit {
 
   @Input() units: UnitData[] | null = [];
-  myUnits: Unit[] = new Array<Unit>();
+  @Input() abilityData: AbilityData[] | null = [];
   @Input() activeUnit: Unit | null = null;
+  
+  
+  myUnits: Unit[] = new Array<Unit>();
+
 
   loadedUnits: boolean = false;
 
@@ -46,20 +50,34 @@ export class UnitsComponent implements OnInit {
 
   ngOnChanges() : void {
     console.log(` ngOnChanges in UnitsComponent: units is ${this.units}`)
-    if(this.units && !this.loadedUnits){
-      const myKark: Unit = ObjectFactory.createUnitFromData(this.units[0]);
+    //TODO this is hacky just to build a list of units to test with
+    // It's not working because abilityData is not null, but it's empty (even though it was handed down from app component??)
+    if(this.units && this.abilityData && this.abilityData.length > 0 && !this.loadedUnits){
+      console.log(` DING DONG DING DONG`);
+      let myKark: Unit = ObjectFactory.createUnitFromData(this.units[0]);
       this.myUnits.push(myKark);
-      console.log(`Loaded a Karkadrak? ${JSON.stringify(this.myUnits)}`)
+      console.log(` KARK DONE`);
       this.myUnits.push(ObjectFactory.createUnitFromData(this.units[1]));
+      console.log(` FOMORID DONE`);
+
+
+      console.log(` abilityData: ${JSON.stringify(this.abilityData)}`);
+      const armyAbilities = AbilityHelper.createAbilityListFromData(this.abilityData);
+      const khorneGeneralAura = AbilityHelper.findAbilityByName("Aura of Khorne (General)", armyAbilities);
+
+      console.log(` KHORNE AURA?? ${khorneGeneralAura}`);
+
+      if(khorneGeneralAura) {
+        myKark = AbilityHelper.addAbilityToUnit(khorneGeneralAura, myKark);
+        console.log(`Aura on Kark? ${JSON.stringify(this.myUnits)}`)
+      }
+
       this.loadedUnits = true;
     }
   }
 
   onSelect(unit: Unit) {
-    //this.selectedUnit = unit;
-    console.log("select 1");
     this.store.dispatch(selectUnit({selectedUnit: unit}));
-    console.log("select 2");
   }
 
 }

@@ -13,7 +13,7 @@ export const selectAllUnits = createSelector(
   (state: ArmyState) => state.allUnits
 );
 
-export const selectAllAbilites = createSelector(
+export const selectAllAbilities = createSelector(
   selectArmy,
   (state: ArmyState) => state.allAbilities
 );
