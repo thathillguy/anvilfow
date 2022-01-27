@@ -1,9 +1,10 @@
-<div *ngIf="ability">
-    <div *ngIf="ability.conditionText">
+<div *ngIf="_ability">
+    <div *ngIf="_ability.conditionText">
         <input type="checkbox"
-        (click)="abilityToggle()"> {{ability.conditionText}}
+        [checked] = "abilityIsActive"
+        (change) = "abilityToggle($event)"/> {{_ability.conditionText}}
     </div>
     
-    {{ability.abilityName}}: {{ability.abilityFullText}}
+    {{_ability.abilityName}}: {{_ability.abilityFullText}}
 
 </div>

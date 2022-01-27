@@ -8,20 +8,27 @@ import { enableAbilityToSelectedUnit } from '../../store/app.actions';
   templateUrl: './ability-detail.component.html',
   styleUrls: ['./ability-detail.component.less']
 })
-export class AbilityDetailComponent implements OnInit {
+export class AbilityDetailComponent {
 
-  @Input() ability?: Ability;
-
-  constructor(private store: Store) { }
-
-  ngOnInit(): void {
+  abilityIsActive: boolean = false;
+  _ability: Ability | null = null;
+  @Input() set ability(value: Ability) {
+    this._ability = value;
+    this.abilityIsActive = value.isActive;
+    console.log(`in setAbility: abilityIsActive for ${this._ability.abilityName} is ${this.abilityIsActive}`);
   }
 
-  abilityToggle() {
-    if(this.ability) {
-      //this.ability.isActive = !this.ability.isActive;
-      this.store.dispatch(enableAbilityToSelectedUnit({targetAbility: this.ability, newStatus: true}));
-      console.log(`1: ${this.ability.abilityName} is now ${this.ability.isActive} after dispatch`);
+  constructor(private store: Store) {
+  }
+
+  abilityToggle(e: any) {
+    if(this._ability) {
+      this.abilityIsActive = !this.abilityIsActive;
+      console.log(`beep 1: ${this._ability.abilityName} ${this.abilityIsActive}`);
+      if(this._ability) {
+        this.store.dispatch(enableAbilityToSelectedUnit({targetAbility: this._ability, newStatus: this.abilityIsActive}));
+        console.log(`1: ${this._ability.abilityName} is now ${this._ability.isActive} after dispatch`);
+      }
     }
   }
 
