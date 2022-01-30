@@ -1,14 +1,14 @@
-import { AbilityData } from "./AbilityData";
+import { Ability } from "./Ability";
 import { WeaponData } from "./WeaponData";
 
 export interface UnitData {
     unitName: string;
     keywords: string[];
-    baseMove: number;
+    baseMove: number | number[];
     baseSave: number;
     baseBravery: number;
     baseWounds: number;
     missileWeapons: WeaponData[];
     meleeWeapons: WeaponData[];
-    abilities: AbilityData[];
+    abilities: Ability[];
 }

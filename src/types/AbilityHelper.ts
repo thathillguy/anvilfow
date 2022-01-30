@@ -1,19 +1,10 @@
 import { Ability } from "./Ability";
-import { AbilityData } from "./AbilityData";
 import { Effect } from "./Effect";
 import { ObjectFactory } from "./ObjectFactory";
 import { Unit } from "./Unit";
 import { Weapon } from "./Weapon";
 
 export class AbilityHelper {
-
-    static createAbilityListFromData(initialData: AbilityData[]): Ability[] {
-        let abilityList = new Array<Ability>();
-        for(let i = 0; i < initialData.length; i++) {
-            abilityList.push(ObjectFactory.createAbilityFromData(initialData[i]));
-        }
-        return abilityList;
-    }
 
     static findAbilityByName(name: string, abilityList: Ability[]): Ability | null {
         let foundAbility: Ability | null = null;

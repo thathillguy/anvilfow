@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UnitData } from '../types/UnitData';
 import { Unit } from '../types/Unit';
-import { AbilityData } from '../types/AbilityData';
 import { Ability } from '../types/Ability';
 import { Observable } from 'rxjs';
 import {select, Store} from "@ngrx/store";
@@ -18,7 +17,7 @@ import { selectActiveUnit, selectAllAbilities, selectAllUnits } from './store/ap
 export class AppComponent implements OnInit {
   title = 'anvilfow';
   allUnitData$: Observable<UnitData[]>
-  allAbilityData$: Observable<AbilityData[]>
+  allAbilityData$: Observable<Ability[]>
   activeUnit$: Observable<Unit | null>;
 
   constructor(private store: Store<AppState>) {

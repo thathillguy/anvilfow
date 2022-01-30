@@ -4,14 +4,13 @@ import {enableAbilityToSelectedUnit, loadAllAbilities, loadAllAbilitiesSuccess, 
 import {UnitData} from "../../types/UnitData";
 import {Ability} from "../../types/Ability";
 import { AbilityHelper } from '../../types/AbilityHelper';
-import {AbilityData} from "../../types/AbilityData";
 
 export interface ArmyState {
   allUnits: UnitData[],
-  allAbilities: AbilityData[]
+  allAbilities: Ability[]
   army: {
     units: Unit[],
-    abilities: AbilityData[]
+    abilities: Ability[]
   },
   selectedUnit: Unit | null,
   modalData: any

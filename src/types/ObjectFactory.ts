@@ -1,5 +1,4 @@
 import { Ability } from "./Ability";
-import { AbilityData } from "./AbilityData";
 import { AbilityHelper } from "./AbilityHelper";
 import { Effect } from "./Effect";
 import { Unit } from "./Unit";
@@ -13,6 +12,7 @@ export class ObjectFactory {
         let ability: Ability = {
             abilityName: "",
             commandAbility: false,
+            spell: false,
             targetRestrictions: [],
             abilitySource: "",
             abilityShortText: "",
@@ -26,7 +26,7 @@ export class ObjectFactory {
         return ability;
     }
 
-    static createAbilityFromData(data: AbilityData): Ability {
+    static initializeAbility(data: Ability): Ability {
         let newAbility: Ability = ObjectFactory.createAbility();
         newAbility.abilityName = data.abilityName;
         if(data.commandAbility){
@@ -35,6 +35,11 @@ export class ObjectFactory {
         } else {
             newAbility.commandAbility = false;
             newAbility.targetRestrictions = [];
+        }
+        if(data.spell){
+            newAbility.spell = true;
+        } else {
+            newAbility.spell = false;
         }
         newAbility.abilitySource = data.abilitySource;
         newAbility.abilityShortText = data.abilityShortText;
@@ -46,7 +51,7 @@ export class ObjectFactory {
         if(data.conditionText) {
             newAbility.conditionText = data.conditionText;
             newAbility.isActive = false;
-        } else if (newAbility.commandAbility) {
+        } else if (newAbility.commandAbility || newAbility.spell) {
             newAbility.conditionText = "";
             newAbility.isActive = false;
         } else {
@@ -157,7 +162,12 @@ export class ObjectFactory {
         newUnit.keywords = data.keywords;
 
         newUnit.baseMove = data.baseMove;
-        newUnit.move = newUnit.baseMove;
+        if(Array.isArray(newUnit.baseMove)) {
+            newUnit.move = newUnit.baseMove[0];
+        } else {
+            newUnit.move = newUnit.baseMove;
+        }
+        
 
         newUnit.baseSave = data.baseSave;
         newUnit.save = newUnit.baseSave;
@@ -185,7 +195,7 @@ export class ObjectFactory {
 
         newUnit.abilities = new Array<Ability>();
         for (const ability of data.abilities) {
-            let newAbility: Ability = ObjectFactory.createAbilityFromData(ability);
+            let newAbility: Ability = ObjectFactory.initializeAbility(ability);
             //apply all effects that this unit grants to itself
             newUnit = AbilityHelper.addAbilityToUnit(newAbility, newUnit);
         }

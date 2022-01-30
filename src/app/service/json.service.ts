@@ -1,8 +1,8 @@
 import {UnitData} from "../../types/UnitData";
-import {AbilityData} from "../../types/AbilityData";
 import allUnitData from '../../../e2e/S2DUnits.json';
 import allAbilityData from '../../../e2e/S2DAllegianceAbilities.json';
 import { Observable } from "rxjs";
+import { Ability } from "../../types/Ability";
 
 
 export class UnitService {
@@ -16,8 +16,8 @@ export class UnitService {
     });
   }
 
-  readAbilityJSON(): Observable<AbilityData[]> {
-    const data: AbilityData[] = <AbilityData[]>allAbilityData;
+  readAbilityJSON(): Observable<Ability[]> {
+    const data: Ability[] = <Ability[]>allAbilityData;
     return new Observable(subscriber => {
       subscriber.next(data);
       subscriber.complete();

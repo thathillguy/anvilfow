@@ -6,7 +6,7 @@ export interface Unit {
     unitName: string;
     keywords: string[];
 
-    baseMove: number;
+    baseMove: number | number[];
     move: number;
     moveEffects: Effect[];
 

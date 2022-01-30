@@ -3,7 +3,6 @@ import { Unit } from '../../../types/Unit';
 import { UnitData } from '../../../types/UnitData';
 import { AppComponent } from '../../app.component';
 import s2dUnitData from '../../../../e2e/S2DUnits.json';
-import { AbilityData } from '../../../types/AbilityData';
 
 import s2dAbilityData from '../../../../e2e/S2DAllegianceAbilities.json';
 import { Ability } from '../../../types/Ability';
@@ -21,7 +20,7 @@ import { AbilityHelper } from '../../../types/AbilityHelper';
 export class UnitsComponent implements OnInit {
 
   @Input() units: UnitData[] | null = [];
-  @Input() abilityData: AbilityData[] | null = [];
+  @Input() abilityData: Ability[] | null = [];
   @Input() activeUnit: Unit | null = null;
   
   
@@ -50,8 +49,6 @@ export class UnitsComponent implements OnInit {
 
   ngOnChanges() : void {
     console.log(` ngOnChanges in UnitsComponent: units is ${this.units}`)
-    //TODO this is hacky just to build a list of units to test with
-    // It's not working because abilityData is not null, but it's empty (even though it was handed down from app component??)
     if(this.units && this.abilityData && this.abilityData.length > 0 && !this.loadedUnits){
       console.log(` DING DONG DING DONG`);
       let myKark: Unit = ObjectFactory.createUnitFromData(this.units[0]);
@@ -59,11 +56,11 @@ export class UnitsComponent implements OnInit {
       console.log(` KARK DONE`);
       this.myUnits.push(ObjectFactory.createUnitFromData(this.units[1]));
       console.log(` FOMORID DONE`);
+      this.myUnits.push(ObjectFactory.createUnitFromData(this.units[2]));
 
 
       console.log(` abilityData: ${JSON.stringify(this.abilityData)}`);
-      const armyAbilities = AbilityHelper.createAbilityListFromData(this.abilityData);
-      const khorneGeneralAura = AbilityHelper.findAbilityByName("Aura of Khorne (General)", armyAbilities);
+      const khorneGeneralAura = AbilityHelper.findAbilityByName("Aura of Khorne (General)", this.abilityData);
 
       console.log(` KHORNE AURA?? ${khorneGeneralAura}`);
 

@@ -3,7 +3,7 @@
         <h1>{{unit.unitName}}</h1>
         <p>Move: {{unit.move}}"</p>
         <p>Save: {{unit.save}}+</p>
-        <p>Wounds: {{unit.wounds}} ({{unit.woundsTaken}} taken)</p>
+        <p>Wounds: {{unit.wounds}} ({{unit.woundsTaken}} taken) <button (click)="addWound()">+1</button> <button (click)="removeWound()">-1</button></p>
         <p>Bravery: {{unit.bravery}}</p>
         <div *ngIf="unit.missileWeapons.length>0"
             class="unitDetail">

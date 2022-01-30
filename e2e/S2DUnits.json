@@ -160,4 +160,107 @@
 			"sourceUnit":"THIS",
 			"showOn":["OVERVIEW"]
 		}]
+},
+{
+	"unitName":"Be'lakor, the Dark Master",
+	"keywords": ["CHAOS", "DAEMON", "DAEMON PRINCE", "SLAVES TO DARKNESS", "UNDIVIDED", "HERO", "WIZARD", "MONSTER", "BE’LAKOR"],
+	"baseMove": [14, 14, 14, 14, 12, 12, 12, 10, 10, 8, 8, 6],
+	"baseSave": 4,
+	"baseBravery": 10,
+	"baseWounds": 14,
+	"missileWeapons":[],
+	"meleeWeapons":[
+		{
+            "weaponName": "Blade of Shadows",
+			"range": "2\"",
+            "baseAttacks": 999,
+            "baseToHit": 3,
+            "baseToWound": 3,
+            "baseRend": -2,
+			"baseDamage": "2"
+        },
+		{
+            "weaponName": "Fell Claw",
+			"range": "1\"",
+            "baseAttacks": 1,
+            "baseToHit": 3,
+            "baseToWound": 3,
+            "baseRend": -1,
+			"baseDamage": "2"
+        },
+		{
+            "weaponName": "Spearing Tail",
+			"range": "3\"",
+            "baseAttacks": 1,
+            "baseToHit": 2,
+            "baseToWound": 999,
+            "baseRend": -3,
+			"baseDamage": "2"
+        }],
+	"abilities":[
+		{
+			"abilityName":"Fly",
+			"abilitySource":"Warscroll: Be'lakor, the Dark Master",
+			"abilityShortText":"Fly",
+			"abilityFullText":"This model can fly.",
+			"phase":["INMOVE"],
+			"sourceUnit":"THIS",
+			"showOn":["SOURCE"],
+			"effects":[
+				{
+					"effectType":"STATIC",
+					"stat":"move",
+					"effectText":"Fly"
+				}]
+		},
+		{
+			"abilityName":"The Dark Master",
+			"abilitySource":"Warscroll: Be'lakor, the Dark Master",
+			"abilityShortText":"Once per battle, in enemy hero phase, curse a hero. Each phase, it can't do anything on a 3+",
+			"abilityFullText":"Once per battle, at the start of the enemy hero phase, you can pick 1 enemy unit on the battlefield. Until your next hero phase, at the start of each phase (including the phase in which the unit was picked), you can roll a dice for that unit. On a 3+, that unit cannot move, shoot, fight, use command abilities, chant prayers, attempt to cast spells, attempt to dispel endless spells or attempt to unbind spells in that phase.",
+			"phase":["HEROSTART"],
+			"sourceUnit":"THIS",
+			"showOn":["OVERVIEW"]
+		},
+		{
+			"abilityName":"Lord of Torment",
+			"abilitySource":"Warscroll: Be'lakor, the Dark Master",
+			"abilityShortText":"If an enemy within 12\" fails a battleshock test, heal D3",
+			"abilityFullText":"If an enemy unit fails a battleshock test while it is within 12\" of this model, you can heal up to D3 wounds allocated to this model.",
+			"phase":["INBSHOCK"],
+			"sourceUnit":"THIS",
+			"showOn":["OVERVIEW"]
+		},
+		{
+			"abilityName":"Shadow Form",
+			"abilitySource":"Warscroll: Be'lakor, the Dark Master",
+			"abilityShortText":"Ignore save modifiers",
+			"abilityFullText":"Ignore modifiers (positive or negative) when making save rolls for attacks that target this model.",
+			"phase":["ALL"],
+			"sourceUnit":"THIS",
+			"showOn":["SOURCE", "OVERVIEW"],
+			"effects":[
+				{
+					"effectType":"STATIC",
+					"stat":"save",
+					"effectText":"Ignore modifiers when making save rolls"
+				}]
+		},
+		{
+			"abilityName":"Enfeeble Foe",
+			"spell": true,
+			"abilitySource":"Warscroll: Be'lakor, the Dark Master",
+			"abilityShortText":"CV 6, Target 1 enemy within 18\". -1 to melee wound rolls",
+			"abilityFullText":"Enfeeble Foe has a casting value of 6. If successfully cast, pick 1 enemy unit within 18\" of the caster and visible to them. Subtract 1 from wound rolls for attacks made with melee weapons by that unit until your next hero phase.",
+			"phase":["INHERO"],
+			"sourceUnit":"THIS",
+			"showOn":["MAGIC"],
+			"effects":[
+				{
+					"effectType":"STATMOD",
+					"stat":"toWound:Melee",
+					"modValue":-1,
+					"effectText":"-1 to Wound rolls"
+				}]
+		}]
 }]

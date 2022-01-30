@@ -38,4 +38,38 @@ export class UnitDetailComponent implements OnInit {
     this.selectedStatEffects = selectedStatEffects;
   }
 
+  addWound() {
+    console.log(` addWound`);
+    this.changeWounds(1);
+  }
+
+  removeWound() {
+    console.log(` removeWound`);
+    this.changeWounds(-1);
+  }
+
+  changeWounds(mod: number) {
+    if(this.unit) {
+      let newWounds: number = this.unit.woundsTaken + mod;
+      this.unit = {...this.unit, woundsTaken: newWounds};
+      this.updateArrayValues();
+    }
+  }
+
+  updateArrayValues() {
+    if (this.unit) {
+      let newUnit = {...this.unit};
+      if (Array.isArray(newUnit.baseMove)) {
+        //if beyond the last value in the array, use the last array value
+        if (newUnit.woundsTaken >= newUnit.baseMove.length) {
+          newUnit.move = newUnit.baseMove[newUnit.baseMove.length - 1];
+        } else if (newUnit.woundsTaken >= 0) {
+          //use the array value that corresponds to wounds taken
+          newUnit.move = newUnit.baseMove[newUnit.woundsTaken];
+        }
+        this.unit = newUnit;
+      }
+    }
+  }
+
 }
