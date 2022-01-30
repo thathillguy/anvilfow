@@ -5,7 +5,7 @@ export interface UnitData {
     unitName: string;
     keywords: string[];
     baseMove: number | number[];
-    baseSave: number;
+    baseSave: number | number[];
     baseBravery: number;
     baseWounds: number;
     missileWeapons: WeaponData[];

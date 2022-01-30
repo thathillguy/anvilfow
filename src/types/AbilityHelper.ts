@@ -1,4 +1,5 @@
 import { Ability } from "./Ability";
+import { ArrayValueHelper } from "./ArrayValueHelper";
 import { Effect } from "./Effect";
 import { ObjectFactory } from "./ObjectFactory";
 import { Unit } from "./Unit";
@@ -120,15 +121,15 @@ export class AbilityHelper {
                     if(newEffect.effectType === "STATMOD" && newEffect.modValue) {
                         //A +1 to save actually takes a 4+ save to a 3+ save (also, cap at +/- 1 from base)
                         unit.save -= newEffect.modValue as number;
-                        unit.save = Math.max(unit.save, unit.baseSave - 1);
-                        unit.save = Math.min(unit.save, unit.baseSave + 1);
+                        unit.save = Math.max(unit.save, ArrayValueHelper.getBaseValueNum(unit, unit.baseSave) - 1);
+                        unit.save = Math.min(unit.save, ArrayValueHelper.getBaseValueNum(unit, unit.baseSave) + 1);
                     }
                 } else {
                     unit.saveEffects = AbilityHelper.removeEffectFromArray(newEffect, unit.saveEffects);
                     if(newEffect.effectType === "STATMOD" && newEffect.modValue) {
                         unit.save += newEffect.modValue as number;
-                        unit.save = Math.max(unit.save, unit.baseSave - 1);
-                        unit.save = Math.min(unit.save, unit.baseSave + 1);
+                        unit.save = Math.max(unit.save, ArrayValueHelper.getBaseValueNum(unit, unit.baseSave) - 1);
+                        unit.save = Math.min(unit.save, ArrayValueHelper.getBaseValueNum(unit, unit.baseSave) + 1);
                     }
                 }
                 break;
@@ -241,16 +242,16 @@ export class AbilityHelper {
                     if(newEffect.effectType === "STATMOD" && newEffect.modValue) {
                         //A +1 to hit actually takes a 4+ to hit to a 3+ to hit (also, cap at +/- 1 from base)
                         newWeapon.toHit -= newEffect.modValue as number;
-                        newWeapon.toHit = Math.max(newWeapon.toHit, newWeapon.baseToHit - 1);
-                        newWeapon.toHit = Math.min(newWeapon.toHit, newWeapon.baseToHit + 1);
+                        newWeapon.toHit = Math.max(newWeapon.toHit, ArrayValueHelper.getBaseValueNum(unit, newWeapon.baseToHit) - 1);
+                        newWeapon.toHit = Math.min(newWeapon.toHit, ArrayValueHelper.getBaseValueNum(unit, newWeapon.baseToHit) + 1);
                     }
                 } else {
                     newWeapon = {...weapon, hitEffects: this.removeEffectFromArray(newEffect, weapon.hitEffects)};
                     if(newEffect.effectType === "STATMOD" && newEffect.modValue) {
                         //A +1 to hit actually takes a 4+ to hit to a 3+ to hit (also, cap at +/- 1 from base)
                         newWeapon.toHit += newEffect.modValue as number;
-                        newWeapon.toHit = Math.max(newWeapon.toHit, newWeapon.baseToHit - 1);
-                        newWeapon.toHit = Math.min(newWeapon.toHit, newWeapon.baseToHit + 1);
+                        newWeapon.toHit = Math.max(newWeapon.toHit, ArrayValueHelper.getBaseValueNum(unit, newWeapon.baseToHit) - 1);
+                        newWeapon.toHit = Math.min(newWeapon.toHit, ArrayValueHelper.getBaseValueNum(unit, newWeapon.baseToHit) + 1);
                     }
                 }
                 break;
@@ -261,16 +262,16 @@ export class AbilityHelper {
                     if(newEffect.effectType === "STATMOD" && newEffect.modValue) {
                         //A +1 to wound actually takes a 4+ to a 3+ (also, cap at +/- 1 from base)
                         newWeapon.toWound -= newEffect.modValue as number;
-                        newWeapon.toWound = Math.max(newWeapon.toWound, newWeapon.baseToWound - 1);
-                        newWeapon.toWound = Math.min(newWeapon.toWound, newWeapon.baseToWound + 1);
+                        newWeapon.toWound = Math.max(newWeapon.toWound, ArrayValueHelper.getBaseValueNum(unit, newWeapon.baseToWound) - 1);
+                        newWeapon.toWound = Math.min(newWeapon.toWound, ArrayValueHelper.getBaseValueNum(unit, newWeapon.baseToWound) + 1);
                     }
                 } else {
                     newWeapon = {...weapon, woundEffects: this.removeEffectFromArray(newEffect, weapon.woundEffects)};
                     if(newEffect.effectType === "STATMOD" && newEffect.modValue) {
                         //A +1 to wound actually takes a 4+ to a 3+ (also, cap at +/- 1 from base)
                         newWeapon.toWound += newEffect.modValue as number;
-                        newWeapon.toWound = Math.max(newWeapon.toWound, newWeapon.baseToWound - 1);
-                        newWeapon.toWound = Math.min(newWeapon.toWound, newWeapon.baseToWound + 1);
+                        newWeapon.toWound = Math.max(newWeapon.toWound, ArrayValueHelper.getBaseValueNum(unit, newWeapon.baseToWound) - 1);
+                        newWeapon.toWound = Math.min(newWeapon.toWound, ArrayValueHelper.getBaseValueNum(unit, newWeapon.baseToWound) + 1);
                     }
                 }
                 break;
@@ -296,7 +297,7 @@ export class AbilityHelper {
                     newWeapon = {...weapon, damageEffects: this.removeEffectFromArray(newEffect, weapon.damageEffects)};
                 }
                 //Since this is a string (to support D3 damage weapons) just remake the string taking into account all current effects
-                newWeapon.damage = weapon.baseDamage;
+                newWeapon.damage = ArrayValueHelper.getBaseValueStr(unit, weapon.baseDamage);
                 for (const element of weapon.damageEffects) {
                     if(element.effectType === "STATMOD" && element.modValue) {
                         newWeapon.damage += element.modValue.toString();

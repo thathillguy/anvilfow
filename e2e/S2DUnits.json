@@ -173,7 +173,7 @@
 		{
             "weaponName": "Blade of Shadows",
 			"range": "2\"",
-            "baseAttacks": 999,
+            "baseAttacks": [8, 8, 8, 8, 7, 7, 7, 6, 6, 5, 5, 4],
             "baseToHit": 3,
             "baseToWound": 3,
             "baseRend": -2,
@@ -193,7 +193,7 @@
 			"range": "3\"",
             "baseAttacks": 1,
             "baseToHit": 2,
-            "baseToWound": 999,
+            "baseToWound": [1, 1, 1, 1, 2, 2, 2, 3, 3, 4, 4, 5],
             "baseRend": -3,
 			"baseDamage": "2"
         }],

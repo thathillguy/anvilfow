@@ -2,9 +2,9 @@ export interface WeaponData {
     weaponName: string;
     isMount: boolean;
     range: string;
-    baseAttacks: number;
-    baseToHit: number;
-    baseToWound: number;
-    baseRend: number;
-    baseDamage: string;
+    baseAttacks: number | number[];
+    baseToHit: number | number[];
+    baseToWound: number | number[];
+    baseRend: number | number[];
+    baseDamage: string | string[];
 }

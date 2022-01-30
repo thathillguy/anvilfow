@@ -10,7 +10,7 @@ export interface Unit {
     move: number;
     moveEffects: Effect[];
 
-    baseSave: number;
+    baseSave: number | number[];
     save: number;
     saveEffects: Effect[];
 

@@ -104,19 +104,39 @@ export class ObjectFactory {
         newWeapon.range = data.range;
 
         newWeapon.baseAttacks = data.baseAttacks;
-        newWeapon.attacks = newWeapon.baseAttacks;
+        if(Array.isArray(newWeapon.baseAttacks)) {
+            newWeapon.attacks = newWeapon.baseAttacks[0];
+        } else {
+            newWeapon.attacks = newWeapon.baseAttacks;
+        }
 
         newWeapon.baseToHit = data.baseToHit;
-        newWeapon.toHit = newWeapon.baseToHit;
+        if(Array.isArray(newWeapon.baseToHit)) {
+            newWeapon.toHit = newWeapon.baseToHit[0];
+        } else {
+            newWeapon.toHit = newWeapon.baseToHit;
+        }
 
         newWeapon.baseToWound = data.baseToWound;
-        newWeapon.toWound = newWeapon.baseToWound;
+        if(Array.isArray(newWeapon.baseToWound)) {
+            newWeapon.toWound = newWeapon.baseToWound[0];
+        } else {
+            newWeapon.toWound = newWeapon.baseToWound;
+        }
 
         newWeapon.baseRend = data.baseRend;
-        newWeapon.rend = newWeapon.baseRend;
+        if(Array.isArray(newWeapon.baseRend)) {
+            newWeapon.rend = newWeapon.baseRend[0];
+        } else {
+            newWeapon.rend = newWeapon.baseRend;
+        }
 
         newWeapon.baseDamage = data.baseDamage;
-        newWeapon.damage = newWeapon.baseDamage;
+        if(Array.isArray(newWeapon.baseDamage)) {
+            newWeapon.damage = newWeapon.baseDamage[0];
+        } else {
+            newWeapon.damage = newWeapon.baseDamage;
+        }
 
         newWeapon.attacksEffects = new Array<Effect>();
         newWeapon.hitEffects = new Array<Effect>();
@@ -170,7 +190,11 @@ export class ObjectFactory {
         
 
         newUnit.baseSave = data.baseSave;
-        newUnit.save = newUnit.baseSave;
+        if(Array.isArray(newUnit.baseSave)) {
+            newUnit.save = newUnit.baseSave[0];
+        } else {
+            newUnit.save = newUnit.baseSave;
+        }
 
         newUnit.baseBravery = data.baseBravery;
         newUnit.bravery = newUnit.baseBravery;

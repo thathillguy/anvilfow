@@ -5,23 +5,23 @@ export interface Weapon {
     isMount: boolean;
     range: string;
 
-    baseAttacks: number;
+    baseAttacks: number | number[];
     attacks: number;
     attacksEffects: Effect[];
 
-    baseToHit: number;
+    baseToHit: number | number[];
     toHit: number;
     hitEffects: Effect[]
 
-    baseToWound: number;
+    baseToWound: number | number[];
     toWound: number;
     woundEffects: Effect[];
 
-    baseRend: number;
+    baseRend: number | number[];
     rend: number;
     rendEffects: Effect[];
 
-    baseDamage: string;
+    baseDamage: string | string[];
     damage: string;
     damageEffects: Effect[];
 }
