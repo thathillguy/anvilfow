@@ -1,18 +1,20 @@
 import {Action, createReducer, on,} from '@ngrx/store';
 import {Unit} from "../../types/Unit";
-import {enableAbilityToSelectedUnit, loadAllAbilities, loadAllAbilitiesSuccess, loadAllUnits, loadAllUnitsSuccess, selectUnit} from "./app.actions";
+import {addUnitToArmy, enableAbilityToSelectedUnit, loadAllAbilities, loadAllAbilitiesSuccess, loadAllUnits, loadAllUnitsSuccess, removeUnitFromArmy, selectArmyUnit} from "./app.actions";
 import {UnitData} from "../../types/UnitData";
 import {Ability} from "../../types/Ability";
 import { AbilityHelper } from '../../types/AbilityHelper';
+import { ObjectFactory } from '../../types/ObjectFactory';
+import { enableMapSet, produce } from 'immer';
+
+enableMapSet();
 
 export interface ArmyState {
   allUnits: UnitData[],
-  allAbilities: Ability[]
-  army: {
-    units: Unit[],
-    abilities: Ability[]
-  },
-  selectedUnit: Unit | null,
+  allAbilities: Ability[],
+  armyUnits: Map<number, Unit>,
+  armyAbilities: Ability[],
+  activeUnitID: number,
   modalData: any
 }
 
@@ -23,8 +25,9 @@ export interface AppState {
 export const initialState: ArmyState = {
   allUnits: [],
   allAbilities: [],
-  army: {units: [], abilities: []},
-  selectedUnit: null,
+  armyUnits: new Map<number, Unit>(),
+  armyAbilities: [],
+  activeUnitID: -1,
   modalData: null,
 }
 
@@ -37,29 +40,48 @@ const loadAllAbilitesSuccessHandler = (state: ArmyState, action: any) => {
   return {...state, allAbilities: [...action.abilities]}
 }
 
-const selectUnitHandler = (state: ArmyState, {selectedUnit} : {selectedUnit: Unit}) => {
-  console.log("In selectUnitHandler");
-  return {...state, selectedUnit: selectedUnit};
+const addUnitToArmyHandler = (state: ArmyState, action: any) => {
+  console.log("In addUnitToArmyHandler: ", action)
+  ObjectFactory.unitCount++;
+  return produce(state, draft => {
+    draft.armyUnits.set(ObjectFactory.unitCount, ObjectFactory.createUnitFromData(action.unitToAdd))
+  })
+}
+
+const removeUnitFromArmyHandler = (state: ArmyState, action: any) => {
+  console.log("In removeUnitFromArmyHandler: ", action)
+  return produce(state, draft => {
+    draft.armyUnits.delete(action.unitToRemoveID)
+  })
+}
+
+const selectArmyUnitHandler = (state: ArmyState, action: any) => {
+  console.log("In selectArmyUnitHandler");
+  return produce(state, draft => {
+    if(state.armyUnits.get(action.selectedArmyUnitID)) {
+      draft.activeUnitID = action.selectedArmyUnitID;
+    } else {
+      draft.activeUnitID = -1;
+    }
+  })
 }
 
 const enableAbilityToSelectedUnitHandler = (state: ArmyState, {targetAbility, newStatus} : {targetAbility: Ability, newStatus: boolean}) => {
   console.log("In enableAbilityToSelectedUnitHandler");
-  if(state.selectedUnit) {
+  if(state.armyUnits.get(state.activeUnitID)) {
     console.log("calling setAbilityStatus");
-    let newSelectedUnit = AbilityHelper.setAbilityStatus(state.selectedUnit, targetAbility, newStatus);
+    let newSelectedUnit = AbilityHelper.setAbilityStatus(state.armyUnits.get(state.activeUnitID)!, targetAbility, newStatus);
     return {...state, selectedUnit: newSelectedUnit}
   }
   return {...state}
 }
 
-/*export function armyReducer(state: ArmyState, action) {
-  return _armyReducer(state, action);
-}*/
-
 export const armyReducer = createReducer(
   initialState,
   on(loadAllUnitsSuccess, loadAllUnitsSuccessHandler),
   on(loadAllAbilitiesSuccess, loadAllAbilitesSuccessHandler),
-  on(selectUnit, selectUnitHandler),
+  on(addUnitToArmy, addUnitToArmyHandler),
+  on(removeUnitFromArmy, removeUnitFromArmyHandler),
+  on(selectArmyUnit, selectArmyUnitHandler),
   on(enableAbilityToSelectedUnit, enableAbilityToSelectedUnitHandler),
 );

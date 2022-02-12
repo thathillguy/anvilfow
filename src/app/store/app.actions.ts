@@ -17,11 +17,19 @@ export const loadAllAbilities = createAction(LOAD_ALL_ABILITIES);
 export const loadAllAbilitiesSuccess = createAction(LOAD_ALL_ABILITIES_SUCCESS,  props<{ units: Ability[]}>());
 export const loadAllAbilitiesFailure = createAction(LOAD_ALL_ABILITIES_FAILURE);
 
-export const addUnitToArmy = createAction('[Army Component] Add To Army');
+export const addUnitToArmy = createAction(
+  '[Army Component] Add To Army',
+  props<{unitToAdd: UnitData}>()
+);
 
-export const selectUnit = createAction(
-  '[Army Component] Select Unit',
-  props<{selectedUnit: Unit}>()
+export const removeUnitFromArmy = createAction(
+  '[Army Component] Remove From Army',
+  props<{unitToRemoveID: number}>()
+);
+
+export const selectArmyUnit = createAction(
+  '[Army Component] Select Army Unit',
+  props<{selectedArmyUnitID: number}>()
 );
 
 export const enableAbilityToSelectedUnit = createAction(

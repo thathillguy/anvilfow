@@ -10,10 +10,14 @@
 <div class="container-fluid">
   <toolbar></toolbar>
   <!-- <home></home> -->
-  <app-units
+  <app-unit-library
     [units]="(allUnitData$ | async)"
+  >
+  </app-unit-library>
+  <app-units
+    [armyUnits]="(armyUnits$ | async)"
     [abilityData]="(allAbilityData$ | async)"
-	  [activeUnit]="(activeUnit$ | async)"
+	  [activeUnitID]="(activeUnitID$ | async)"
   >
   </app-units>
 </div>

@@ -24,6 +24,7 @@
     "@ngrx/store": "^13.0.2",
     "@ngrx/store-devtools": "^13.0.2",
     "bootstrap": "^3.4.1",
+    "immer": "^9.0.12",
     "primeicons": "^5.0.0",
     "primeng": "^13.0.4",
     "rxjs": "~7.4.0",

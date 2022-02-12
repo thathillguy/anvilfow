@@ -7,7 +7,7 @@ import s2dUnitData from '../../../../e2e/S2DUnits.json';
 import s2dAbilityData from '../../../../e2e/S2DAllegianceAbilities.json';
 import { Ability } from '../../../types/Ability';
 import { Store } from '@ngrx/store';
-import { selectUnit } from '../../store/app.actions';
+import { removeUnitFromArmy, selectArmyUnit } from '../../store/app.actions';
 import { ObjectFactory } from '../../../types/ObjectFactory';
 import { AbilityHelper } from '../../../types/AbilityHelper';
 
@@ -19,9 +19,9 @@ import { AbilityHelper } from '../../../types/AbilityHelper';
 
 export class UnitsComponent implements OnInit {
 
-  @Input() units: UnitData[] | null = [];
+  @Input() armyUnits: Map<number, Unit> | null = new Map<number, Unit>();
   @Input() abilityData: Ability[] | null = [];
-  @Input() activeUnit: Unit | null = null;
+  @Input() activeUnitID: number | null = null;
   
   
   myUnits: Unit[] = new Array<Unit>();
@@ -30,7 +30,6 @@ export class UnitsComponent implements OnInit {
   loadedUnits: boolean = false;
 
   constructor(private store: Store) {
-    console.log(`UnitsComponent Constructor: units is ${this.units}`);
 
     //const myS2DUnitData: UnitData[] = AppComponent.readUnitJSON(s2dUnitData);
 
@@ -48,7 +47,7 @@ export class UnitsComponent implements OnInit {
   }
 
   ngOnChanges() : void {
-    console.log(` ngOnChanges in UnitsComponent: units is ${this.units}`)
+    /*console.log(` ngOnChanges in UnitsComponent: units is ${this.units}`)
     if(this.units && this.abilityData && this.abilityData.length > 0 && !this.loadedUnits){
       console.log(` DING DONG DING DONG`);
       let myKark: Unit = ObjectFactory.createUnitFromData(this.units[0]);
@@ -70,11 +69,15 @@ export class UnitsComponent implements OnInit {
       }
 
       this.loadedUnits = true;
-    }
+    }*/
   }
 
-  onSelect(unit: Unit) {
-    this.store.dispatch(selectUnit({selectedUnit: unit}));
+  onSelect(key: number) {
+    this.store.dispatch(selectArmyUnit({selectedArmyUnitID: key}));
+  }
+
+  removeUnitFromArmy(key: number) {
+    this.store.dispatch(removeUnitFromArmy({unitToRemoveID: key}));
   }
 
 }

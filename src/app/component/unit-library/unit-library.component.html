@@ -1,0 +1,8 @@
+<h2>Unit Library:</h2>
+<ul class="units">
+    <li *ngFor="let unit of units">
+        <span class="badge">{{unit.unitName}}
+            <button (click)="addUnitToArmy(unit)">[+]</button>
+        </span>
+    </li>
+</ul>

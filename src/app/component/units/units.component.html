@@ -1,9 +1,16 @@
 <h2>My Army:</h2>>
 <ul class="units">
-    <li *ngFor="let unit of myUnits"
-    [class.selected]="unit === activeUnit"
-    (click)="onSelect(unit)">
-        <span class="badge">{{unit.unitName}}</span>
-    </li>
+    <div *ngIf="armyUnits">
+        <li *ngFor="let key of armyUnits.keys()"
+        [class.selected]="key === activeUnitID"
+        (click)="onSelect(key)">
+            <span class="badge">
+                {{armyUnits.get(key)!.unitName}}
+                <button (click)="removeUnitFromArmy(key)">[-]</button>
+            </span>
+        </li>
+    </div>
 </ul>
-<app-unit-detail [unit]="activeUnit"></app-unit-detail>
+<div *ngIf="armyUnits && activeUnitID && armyUnits.has(activeUnitID)">
+    <app-unit-detail [unit]="armyUnits.get(activeUnitID)!"></app-unit-detail>
+</div>

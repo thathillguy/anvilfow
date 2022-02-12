@@ -19,6 +19,7 @@ import { AbilityDetailComponent } from './component/ability-detail/ability-detai
 import {EffectsModule} from "@ngrx/effects";
 import {UnitsEffects} from "./effects/units.effects";
 import {UnitService} from "./service/json.service";
+import { UnitLibraryComponent } from './component/unit-library/unit-library.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import {UnitService} from "./service/json.service";
     CarouselComponent,
 	  UnitDetailComponent,
     UnitsComponent,
-    AbilityDetailComponent
+    AbilityDetailComponent,
+    UnitLibraryComponent
   ],
   imports: [
     BrowserModule,

@@ -3,9 +3,14 @@ import { AppState, ArmyState } from './app.reducer';
  
 export const selectArmy = (state: AppState) => state.army;
  
-export const selectActiveUnit = createSelector(
+export const selectArmyUnits = createSelector(
+  selectArmy,
+(state: ArmyState) => state.armyUnits
+);
+
+export const selectActiveUnitID = createSelector(
     selectArmy,
-  (state: ArmyState) => state.selectedUnit
+  (state: ArmyState) => state.activeUnitID
 );
 
 export const selectAllUnits = createSelector(

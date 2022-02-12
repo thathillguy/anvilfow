@@ -8,6 +8,8 @@ import { WeaponData } from "./WeaponData";
 
 export class ObjectFactory {
 
+    static unitCount = 0;
+
     static createAbility() : Ability {
         let ability: Ability = {
             abilityName: "",
