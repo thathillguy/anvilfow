@@ -1,5 +1,6 @@
 import { Ability } from './Ability';
 import { Effect } from './Effect';
+import { Loadout } from './Loadout';
 import { Weapon } from './Weapon';
 
 export interface Unit {

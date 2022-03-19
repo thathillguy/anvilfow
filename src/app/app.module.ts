@@ -20,6 +20,7 @@ import {EffectsModule} from "@ngrx/effects";
 import {UnitsEffects} from "./effects/units.effects";
 import {UnitService} from "./service/json.service";
 import { UnitLibraryComponent } from './component/unit-library/unit-library.component';
+import { LibraryUnitViewerComponent } from './component/library-unit-viewer/library-unit-viewer.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { UnitLibraryComponent } from './component/unit-library/unit-library.comp
 	  UnitDetailComponent,
     UnitsComponent,
     AbilityDetailComponent,
-    UnitLibraryComponent
+    UnitLibraryComponent,
+    LibraryUnitViewerComponent
   ],
   imports: [
     BrowserModule,

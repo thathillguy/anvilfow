@@ -1,0 +1,62 @@
+<div *ngIf="unit"><h2>Warscroll:</h2>
+    <div>
+        <h1>{{unit.unitName}}</h1>
+        <p>Move: {{translateArrayValue(unit.baseMove)}}"</p>
+        <p>Save: {{translateArrayValue(unit.baseSave)}}+</p>
+        <p>Wounds: {{unit.baseWounds}}</p>
+        <p>Bravery: {{unit.baseBravery}}</p>
+        <div *ngIf="unit.loadouts"
+            class="unitDetail">
+        </div>
+        <div class="unitDetail">
+            <div *ngIf="allMissileWeapons && allMissileWeapons.size>0">
+                <table>
+                    <tr>
+                        <th>Missile Weapons</th> <th>Range</th> <th>Attacks</th> <th>To Hit</th> <th>To Wound</th> <th>Rend</th> <th>Damage</th>
+                    </tr>
+                    <tr *ngFor="let weapon of allMissileWeapons.values()">
+                        <td>{{weapon.weaponName}}</td>
+                        <td>{{translateArrayValue(weapon.range)}}</td>
+                        <td>{{translateArrayValue(weapon.baseAttacks)}}</td>
+                        <td>{{translateArrayValue(weapon.baseToHit)}}</td>
+                        <td>{{translateArrayValue(weapon.baseToWound)}}</td>
+                        <td>{{translateArrayValue(weapon.baseRend)}}</td>
+                        <td>{{translateArrayValue(weapon.baseDamage)}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div *ngIf="allMeleeWeapons && allMeleeWeapons.size>0">
+                <table>
+                    <tr>
+                        <th>Melee Weapons</th> <th>Range</th> <th>Attacks</th> <th>To Hit</th> <th>To Wound</th> <th>Rend</th> <th>Damage</th>
+                    </tr>
+                    <tr *ngFor="let weapon of allMeleeWeapons.values()">
+                        <td>{{weapon.weaponName}}</td>
+                        <td>{{translateArrayValue(weapon.range)}}</td>
+                        <td>{{translateArrayValue(weapon.baseAttacks)}}</td>
+                        <td>{{translateArrayValue(weapon.baseToHit)}}</td>
+                        <td>{{translateArrayValue(weapon.baseToWound)}}</td>
+                        <td>{{translateArrayValue(weapon.baseRend)}}</td>
+                        <td>{{translateArrayValue(weapon.baseDamage)}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div *ngIf="hasTable">
+                <table>
+                    <tr>
+                        <th>Wounds Suffered</th>
+                        <th *ngFor="let title of tableTitles">{{title}}</th>
+                    </tr>
+                    <tr *ngFor="let entry of tableWounds; index as i">
+                        <td>{{entry}}</td>
+                        <td *ngFor="let value of tableValues">{{value[i]}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div *ngIf="allAbilities.size>0">
+                <app-ability-detail *ngFor="let ability of allAbilities.values()"
+                [ability]="ability"></app-ability-detail>
+            </div>
+        </div>
+    </div>
+</div>

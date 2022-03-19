@@ -11,12 +11,17 @@ import { addUnitToArmy } from '../../store/app.actions';
 export class UnitLibraryComponent implements OnInit {
 
   @Input() units: UnitData[] | null = [];
+  selectedUnit: UnitData | null = null;
 
   constructor(private store: Store) {
 
   }
 
   ngOnInit(): void {
+  }
+
+  onSelect(unit: UnitData) {
+    this.selectedUnit = unit;
   }
 
   addUnitToArmy(unit: UnitData) {

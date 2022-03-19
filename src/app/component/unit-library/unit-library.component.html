@@ -1,8 +1,25 @@
-<h2>Unit Library:</h2>
-<ul class="units">
-    <li *ngFor="let unit of units">
-        <span class="badge">{{unit.unitName}}
-            <button (click)="addUnitToArmy(unit)">[+]</button>
-        </span>
-    </li>
-</ul>
+<table>
+    <tr>
+        <th><h2>Unit Library</h2></th> <th>Warscrolls</th>
+    </tr>
+    <tr>
+        <td>
+            <ul class="units">
+                <li *ngFor="let unit of units"
+                (click)="onSelect(unit)">
+                    <span class="badge">{{unit.unitName}}
+                        <button (click)="addUnitToArmy(unit)">[+]</button>
+                    </span>
+                </li>
+            </ul>
+        </td>
+        <td>
+            <div *ngIf="selectedUnit">
+                <app-library-unit-viewer [unit]="selectedUnit"></app-library-unit-viewer>
+            </div>
+        </td>
+    </tr>
+</table>
+
+
+

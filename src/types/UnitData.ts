@@ -1,4 +1,5 @@
 import { Ability } from "./Ability";
+import { Loadout } from "./Loadout";
 import { WeaponData } from "./WeaponData";
 
 export interface UnitData {
@@ -11,4 +12,5 @@ export interface UnitData {
     missileWeapons: WeaponData[];
     meleeWeapons: WeaponData[];
     abilities: Ability[];
+    loadouts?: Loadout[];
 }

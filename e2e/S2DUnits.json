@@ -263,4 +263,184 @@
 					"effectText":"-1 to Wound rolls"
 				}]
 		}]
+},
+{
+	"unitName":"Chaos Warriors",
+	"keywords": ["CHAOS", "MORTAL", "SLAVES TO DARKNESS", "MARK OF CHAOS", "CHAOS WARRIORS"],
+	"baseMove": 5,
+	"baseSave": 4,
+	"baseBravery": 7,
+	"baseWounds": 2,
+	"missileWeapons":[],
+	"meleeWeapons":[],
+	"abilities":[
+		{
+			"abilityName":"Aspiring Champion",
+			"abilitySource":"Warscroll: Chaos Warriors",
+			"abilityShortText":"+1 Attack for the Champion",
+			"abilityFullText":"1 model in this unit can be an Aspiring Champion. Add 1 to the Attacks characteristic of that model’s melee weapons.",
+			"conditionText":"Unit has an Aspiring Champion?",
+			"phase":["INCOMBAT"],
+			"sourceUnit":"THIS",
+			"showOn":["SOURCE"],
+			"effects":[
+				{
+					"effectType":"STATMOD",
+					"stat":"attacks:Melee",
+					"modValue":1,
+					"effectText":"+1 melee weapon attacks for the Aspiring Champion"
+				}]
+		},
+		{
+			"abilityName":"Standard Bearer",
+			"abilitySource":"Warscroll: Chaos Warriors",
+			"abilityShortText":"+1 Bravery from Standard Bearer",
+			"abilityFullText":"1 in every 5 models in this unit can be a Standard Bearer. Add 1 to the Bravery characteristic of this unit while it includes any Standard Bearers.",
+			"conditionText":"Unit has a Standard Bearer?",
+			"phase":["INBSHOCK"],
+			"sourceUnit":"THIS",
+			"showOn":["SOURCE"],
+			"effects":[
+				{
+					"effectType":"STATMOD",
+					"stat":"bravery",
+					"modValue":1,
+					"effectText":"+1 Bravery from Standard Bearer"
+				}]
+		},
+		{
+			"abilityName":"Hornblower",
+			"abilitySource":"Warscroll: Chaos Warriors",
+			"abilityShortText":"+1 Run and Charge from Hornblower",
+			"abilityFullText":"1 in every 5 models in this unit can be a Hornblower. Add 1 to run and charge rolls for this unit while it includes any Hornblowers.",
+			"conditionText":"Unit has a Hornblower?",
+			"phase":["INMOVE", "INCHARGE"],
+			"sourceUnit":"THIS",
+			"showOn":["OVERVIEW"],
+			"effects":[
+				{
+					"effectType":"STATMOD",
+					"stat":"run",
+					"modValue":1,
+					"effectText":"+1 to run rolls from Hornblower"
+				},
+				{
+					"effectType":"STATMOD",
+					"stat":"charge",
+					"modValue":1,
+					"effectText":"+1 to charge rolls from Hornblower"
+				}]
+		},
+		{
+			"abilityName":"Legions of Chaos",
+			"abilitySource":"Warscroll: Chaos Warriors",
+			"abilityShortText":"+1 Save while 10+ models in unit",
+			"abilityFullText":"Add 1 to save rolls for attacks that target this unit while it has at least 10 models.",
+			"conditionText":"Unit 10+ models?",
+			"phase":["INSHOOT", "INCOMBAT"],
+			"sourceUnit":"THIS",
+			"showOn":["SOURCE"],
+			"effects":[
+				{
+					"effectType":"STATMOD",
+					"stat":"save",
+					"modValue":1,
+					"effectText":"+1 Save while 10+ models"
+				}]
+		}],
+	"loadouts":[
+		{
+			"loadoutName":"Chaos Hand Weapon and Chaos Runeshield",
+			"meleeWeapons":[
+				{
+					"weaponName": "Chaos Hand Weapon",
+					"range": "1\"",
+					"baseAttacks": 2,
+					"baseToHit": 3,
+					"baseToWound": 3,
+					"baseRend": 0,
+					"baseDamage": "1"
+				}],
+			"abilities":[
+				{
+					"abilityName":"Chaos Runeshields",
+					"abilitySource":"Warscroll: Chaos Warriors",
+					"abilityShortText":"5+ Ward against Mortal Wounds",
+					"abilityFullText":"Roll a dice each time you allocate a mortal wound to a unit that carries Chaos Runeshields. On a 5+, that mortal wound is negated.",
+					"phase":["ALL"],
+					"sourceUnit":"THIS",
+					"showOn":["OVERVIEW"]
+				}]
+			
+		},
+		{
+			"loadoutName":"Chaos Halberd and Chaos Runeshield",
+			"meleeWeapons":[
+				{
+					"weaponName": "Chaos Halberd",
+					"range": "2\"",
+					"baseAttacks": 2,
+					"baseToHit": 3,
+					"baseToWound": 4,
+					"baseRend": 0,
+					"baseDamage": "1"
+				}],
+			"abilities":[
+				{
+					"abilityName":"Chaos Runeshields",
+					"abilitySource":"Warscroll: Chaos Warriors",
+					"abilityShortText":"5+ Ward against Mortal Wounds",
+					"abilityFullText":"Roll a dice each time you allocate a mortal wound to a unit that carries Chaos Runeshields. On a 5+, that mortal wound is negated.",
+					"phase":["ALL"],
+					"sourceUnit":"THIS",
+					"showOn":["OVERVIEW"]
+				}]
+			
+		},
+		{
+			"loadoutName":"Chaos Greatblade",
+			"meleeWeapons":[
+				{
+					"weaponName": "Chaos Greatblade",
+					"range": "1\"",
+					"baseAttacks": 2,
+					"baseToHit": 4,
+					"baseToWound": 3,
+					"baseRend": -1,
+					"baseDamage": "1"
+				}]
+			
+		},
+		{
+			"loadoutName":"Pair of Chaos Hand Weapons",
+			"meleeWeapons":[
+				{
+					"weaponName": "Chaos Hand Weapon",
+					"range": "1\"",
+					"baseAttacks": 2,
+					"baseToHit": 3,
+					"baseToWound": 3,
+					"baseRend": 0,
+					"baseDamage": "1"
+				}],
+			"abilities":[
+				{
+					"abilityName":"Pair of Chaos Hand Weapons",
+					"abilitySource":"Warscroll: Chaos Warriors",
+					"abilityShortText":"Reroll hit rolls with Pair of Chaos Hand Weapons",
+					"abilityFullText":"You can re-roll hit rolls for attacks made with a pair of Chaos Hand Weapons.",
+					"phase":["INCOMBAT"],
+					"sourceUnit":"THIS",
+					"showOn":["SOURCE"],
+					"effects":[
+						{
+							"effectType":"REROLL",
+							"stat":"toHit:Melee",
+							"onlyReroll1s":false,
+							"effectText":"Reroll hit rolls with Pair of Chaos Hand Weapons"
+						}]
+				}]
+			
+		}]
+		
 }]
