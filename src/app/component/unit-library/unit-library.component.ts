@@ -24,9 +24,4 @@ export class UnitLibraryComponent implements OnInit {
     this.selectedUnit = unit;
   }
 
-  addUnitToArmy(unit: UnitData) {
-    console.log(`blornk: ${unit.unitName}`)
-    this.store.dispatch(addUnitToArmy({unitToAdd: unit}));
-  }
-
 }

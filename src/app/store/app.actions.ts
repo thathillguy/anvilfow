@@ -19,7 +19,7 @@ export const loadAllAbilitiesFailure = createAction(LOAD_ALL_ABILITIES_FAILURE);
 
 export const addUnitToArmy = createAction(
   '[Army Component] Add To Army',
-  props<{unitToAdd: UnitData}>()
+  props<{unitToAdd: UnitData, selectedLoadout: string}>()
 );
 
 export const removeUnitFromArmy = createAction(

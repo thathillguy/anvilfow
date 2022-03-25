@@ -7,9 +7,7 @@
             <ul class="units">
                 <li *ngFor="let unit of units"
                 (click)="onSelect(unit)">
-                    <span class="badge">{{unit.unitName}}
-                        <button (click)="addUnitToArmy(unit)">[+]</button>
-                    </span>
+                    <span class="badge">{{unit.unitName}}</span>
                 </li>
             </ul>
         </td>

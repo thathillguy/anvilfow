@@ -1,7 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
 import { Ability } from '../../../types/Ability';
 import { UnitData } from '../../../types/UnitData';
 import { WeaponData } from '../../../types/WeaponData';
+import { addUnitToArmy } from '../../store/app.actions';
 
 @Component({
   selector: 'app-library-unit-viewer',
@@ -16,13 +18,16 @@ export class LibraryUnitViewerComponent implements OnInit {
     allMissileWeapons: Map<string, WeaponData> = new Map<string, WeaponData>();
     allAbilities: Map<string, Ability> = new Map<string, Ability>();
 
+    selectedLoadoutName : string = "";
+
     //Things to handle table-based values
     hasTable: boolean = false;
     tableWounds: string[] = [];
     tableTitles: string[] = [];
     tableValues: string[][] = [];
   
-    constructor() {
+    constructor(private store: Store) {
+
     }
   
     ngOnInit(): void {
@@ -35,6 +40,7 @@ export class LibraryUnitViewerComponent implements OnInit {
         this.allAbilities = this.getAbilityArray();
         this.setupArrayTable()
       }
+      console.log(`library unit viewer onChanges`);
     }
 
     //In the library, we want to just show table-based values in a table
@@ -180,8 +186,6 @@ export class LibraryUnitViewerComponent implements OnInit {
         let newTable: string[] = [];
         let counter = 0;
 
-        console.log("Building wounds table START");
-
         //We only need to add a new entry to the output each time the value changes
         let currentValue: string | number = "";
         let previousValue: string | number = inputArray[0];
@@ -224,6 +228,19 @@ export class LibraryUnitViewerComponent implements OnInit {
       return output
     }
 
+    onLoadoutSelect() {
+      console.log(`Selected loadout is now ${this.selectedLoadoutName}`);
+    }
+
+    addUnitToArmy(unit: UnitData) {
+      console.log(`blornk: ${unit.unitName}`)
+      //If this unit has loadouts, make sure one is selected before adding to army
+      if(this.unit){
+        if((this.unit.loadouts && this.selectedLoadoutName !== "") || !this.unit.loadouts) {
+          this.store.dispatch(addUnitToArmy({unitToAdd: unit, selectedLoadout: this.selectedLoadoutName}));
+        }
+      }
+    }
 
 
 

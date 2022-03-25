@@ -178,7 +178,7 @@ export class ObjectFactory {
         return unit;
     }
 
-    static createUnitFromData(data: UnitData) : Unit {
+    static createUnitFromData(data: UnitData, loadoutName: string) : Unit {
         let newUnit: Unit = ObjectFactory.createUnit();
         newUnit.unitName = data.unitName;
         newUnit.keywords = data.keywords;
@@ -204,6 +204,11 @@ export class ObjectFactory {
         newUnit.baseWounds = data.baseWounds;
         newUnit.wounds = newUnit.baseWounds;
 
+        newUnit.moveEffects = new Array<Effect>();
+        newUnit.saveEffects = new Array<Effect>();
+        newUnit.braveryEffects = new Array<Effect>();
+        newUnit.woundsEffects = new Array<Effect>();
+
         newUnit.missileWeapons = new Array<Weapon>();
         for(let i = 0; i < data.missileWeapons.length; i++) {
             newUnit.missileWeapons.push(ObjectFactory.createWeaponFromData(data.missileWeapons[i]));
@@ -214,16 +219,36 @@ export class ObjectFactory {
             newUnit.meleeWeapons.push(ObjectFactory.createWeaponFromData(data.meleeWeapons[i]));
         }
 
-        newUnit.moveEffects = new Array<Effect>();
-        newUnit.saveEffects = new Array<Effect>();
-        newUnit.braveryEffects = new Array<Effect>();
-        newUnit.woundsEffects = new Array<Effect>();
-
         newUnit.abilities = new Array<Ability>();
         for (const ability of data.abilities) {
             let newAbility: Ability = ObjectFactory.initializeAbility(ability);
             //apply all effects that this unit grants to itself
             newUnit = AbilityHelper.addAbilityToUnit(newAbility, newUnit);
+        }
+
+        //If this unit has loadouts (i.e. a loadout was supplied), add the appropriate weapons and abilities from the loadout as well
+        if(data.loadouts && loadoutName !== "") {
+            for (const loadout of data.loadouts) {
+                if(loadout.loadoutName === loadoutName) {
+                    if(loadout.missileWeapons) {
+                        for(let i = 0; i < loadout.missileWeapons.length; i++) {
+                            newUnit.missileWeapons.push(ObjectFactory.createWeaponFromData(loadout.missileWeapons[i]));
+                        }
+                    }
+                    if(loadout.meleeWeapons) {
+                        for(let i = 0; i < loadout.meleeWeapons.length; i++) {
+                            newUnit.meleeWeapons.push(ObjectFactory.createWeaponFromData(loadout.meleeWeapons[i]));
+                        }
+                    }
+                    if(loadout.abilities) {
+                        for (const ability of loadout.abilities) {
+                            let newAbility: Ability = ObjectFactory.initializeAbility(ability);
+                            //apply all effects that this unit grants to itself
+                            newUnit = AbilityHelper.addAbilityToUnit(newAbility, newUnit);
+                        }
+                    }
+                }
+            }
         }
 
         return newUnit;

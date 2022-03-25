@@ -44,7 +44,7 @@ const addUnitToArmyHandler = (state: ArmyState, action: any) => {
   console.log("In addUnitToArmyHandler: ", action)
   ObjectFactory.unitCount++;
   return produce(state, draft => {
-    draft.armyUnits.set(ObjectFactory.unitCount, ObjectFactory.createUnitFromData(action.unitToAdd))
+    draft.armyUnits.set(ObjectFactory.unitCount, ObjectFactory.createUnitFromData(action.unitToAdd, action.selectedLoadout))
   })
 }
 

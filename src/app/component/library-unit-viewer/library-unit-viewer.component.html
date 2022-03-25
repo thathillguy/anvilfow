@@ -53,6 +53,12 @@
                     </tr>
                 </table>
             </div>
+            <div *ngIf="unit.loadouts && unit.loadouts.length>0">
+                <select [(ngModel)]="selectedLoadoutName" (change)="onLoadoutSelect()">
+                    <option *ngFor="let l of unit.loadouts" ngValue="{{l.loadoutName}}">{{l.loadoutName}}</option>
+                </select>
+            </div>
+            <button (click)="addUnitToArmy(unit)">[Add To Army]</button>
             <div *ngIf="allAbilities.size>0">
                 <app-ability-detail *ngFor="let ability of allAbilities.values()"
                 [ability]="ability"></app-ability-detail>
