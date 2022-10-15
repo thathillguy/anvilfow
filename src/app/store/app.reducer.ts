@@ -1,6 +1,6 @@
 import {Action, createReducer, on,} from '@ngrx/store';
 import {Unit} from "../../types/Unit";
-import {addUnitToArmy, enableAbilityToSelectedUnit, loadAllAbilities, loadAllAbilitiesSuccess, loadAllUnits, loadAllUnitsSuccess, removeUnitFromArmy, selectArmyUnit} from "./app.actions";
+import {addUnitToArmy, enableAbilityToSelectedUnit, loadAllAbilities, loadAllAbilitiesSuccess, loadAllUnits, loadAllUnitsSuccess, loadCoreRulesSuccess, removeUnitFromArmy, selectArmyUnit} from "./app.actions";
 import {UnitData} from "../../types/UnitData";
 import {Ability} from "../../types/Ability";
 import { AbilityHelper } from '../../types/AbilityHelper';
@@ -10,6 +10,7 @@ import { enableMapSet, produce } from 'immer';
 enableMapSet();
 
 export interface ArmyState {
+  coreRules: Ability[],
   allUnits: UnitData[],
   allAbilities: Ability[],
   armyUnits: Map<number, Unit>,
@@ -23,12 +24,18 @@ export interface AppState {
 }
 
 export const initialState: ArmyState = {
+  coreRules: [],
   allUnits: [],
   allAbilities: [],
   armyUnits: new Map<number, Unit>(),
   armyAbilities: [],
   activeUnitID: -1,
   modalData: null,
+}
+
+const loadCoreRulesSuccessHandler = (state: ArmyState, action: any) => {
+  console.log("In loadCoreRulesSuccessHandler: ", action)
+  return {...state, coreRules: [...action.rules]}
 }
 
 const loadAllUnitsSuccessHandler = (state: ArmyState, action: any) => {
@@ -78,6 +85,7 @@ const enableAbilityToSelectedUnitHandler = (state: ArmyState, {targetAbility, ne
 
 export const armyReducer = createReducer(
   initialState,
+  on(loadCoreRulesSuccess, loadCoreRulesSuccessHandler),
   on(loadAllUnitsSuccess, loadAllUnitsSuccessHandler),
   on(loadAllAbilitiesSuccess, loadAllAbilitesSuccessHandler),
   on(addUnitToArmy, addUnitToArmyHandler),

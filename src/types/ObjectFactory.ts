@@ -12,13 +12,13 @@ export class ObjectFactory {
 
     static createAbility() : Ability {
         let ability: Ability = {
-            abilityName: "",
-            commandAbility: false,
+            name: "",
+            abilityType: "",
             spell: false,
             targetRestrictions: [],
-            abilitySource: "",
-            abilityShortText: "",
-            abilityFullText: "",
+            source: "",
+            shortText: "",
+            fullText: "",
             phase: [],
             showOn: [],
             conditionText: "",
@@ -30,12 +30,12 @@ export class ObjectFactory {
 
     static initializeAbility(data: Ability): Ability {
         let newAbility: Ability = ObjectFactory.createAbility();
-        newAbility.abilityName = data.abilityName;
-        if(data.commandAbility){
-            newAbility.commandAbility = true;
+        newAbility.name = data.name;
+        if(data.abilityType=="CA"){
+            newAbility.abilityType = data.abilityType;
             newAbility.targetRestrictions = <string[]>data.targetRestrictions;
         } else {
-            newAbility.commandAbility = false;
+            newAbility.abilityType = "";
             newAbility.targetRestrictions = [];
         }
         if(data.spell){
@@ -43,9 +43,9 @@ export class ObjectFactory {
         } else {
             newAbility.spell = false;
         }
-        newAbility.abilitySource = data.abilitySource;
-        newAbility.abilityShortText = data.abilityShortText;
-        newAbility.abilityFullText = data.abilityFullText;
+        newAbility.source = data.source;
+        newAbility.shortText = data.shortText;
+        newAbility.fullText = data.fullText;
         newAbility.phase = data.phase;
         newAbility.sourceUnit = data.sourceUnit;
         newAbility.showOn = data.showOn;
@@ -53,7 +53,7 @@ export class ObjectFactory {
         if(data.conditionText) {
             newAbility.conditionText = data.conditionText;
             newAbility.isActive = false;
-        } else if (newAbility.commandAbility || newAbility.spell) {
+        } else if (newAbility.abilityType == "CA" || newAbility.spell) {
             newAbility.conditionText = "";
             newAbility.isActive = false;
         } else {

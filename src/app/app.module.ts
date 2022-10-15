@@ -21,6 +21,8 @@ import {UnitsEffects} from "./effects/units.effects";
 import {UnitService} from "./service/json.service";
 import { UnitLibraryComponent } from './component/unit-library/unit-library.component';
 import { LibraryUnitViewerComponent } from './component/library-unit-viewer/library-unit-viewer.component';
+import { RemindersComponent } from './component/reminder/reminders/reminders.component';
+import { RuleDetailComponent } from './component/reminder/rule-detail/rule-detail.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { LibraryUnitViewerComponent } from './component/library-unit-viewer/libr
     UnitsComponent,
     AbilityDetailComponent,
     UnitLibraryComponent,
-    LibraryUnitViewerComponent
+    LibraryUnitViewerComponent,
+    RemindersComponent,
+    RuleDetailComponent
   ],
   imports: [
     BrowserModule,

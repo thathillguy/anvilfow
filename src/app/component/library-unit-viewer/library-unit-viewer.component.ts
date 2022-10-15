@@ -88,14 +88,14 @@ export class LibraryUnitViewerComponent implements OnInit {
       let combinedAbilities: Map<string, Ability> = new Map<string, Ability>();
       if(this.unit) {
         for(let i = 0; i < this.unit.abilities.length; i++) {
-          combinedAbilities.set(this.unit.abilities[i].abilityName, this.unit.abilities[i]);
+          combinedAbilities.set(this.unit.abilities[i].name, this.unit.abilities[i]);
         }
         if(this.unit.loadouts) {
           //If there ARE loadouts, compile all abilities into one list
           for(let i = 0; i < this.unit.loadouts.length; i++) {
             if(this.unit.loadouts[i].abilities) {
               for(let j = 0; j < this.unit.loadouts[i].abilities!.length; j++) {
-                combinedAbilities.set(this.unit.loadouts[i].abilities![j].abilityName, this.unit.loadouts[i].abilities![j]);
+                combinedAbilities.set(this.unit.loadouts[i].abilities![j].name, this.unit.loadouts[i].abilities![j]);
               }
             }
           }

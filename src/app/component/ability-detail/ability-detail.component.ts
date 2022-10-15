@@ -14,8 +14,10 @@ export class AbilityDetailComponent {
   _ability: Ability | null = null;
   @Input() set ability(value: Ability) {
     this._ability = value;
-    this.abilityIsActive = value.isActive;
-    console.log(`in setAbility: abilityIsActive for ${this._ability.abilityName} is ${this.abilityIsActive}`);
+    if(value.isActive) {
+      this.abilityIsActive = value.isActive;
+    }
+    console.log(`in setAbility: abilityIsActive for ${this._ability.name} is ${this.abilityIsActive}`);
   }
 
   constructor(private store: Store) {
@@ -24,10 +26,10 @@ export class AbilityDetailComponent {
   abilityToggle(e: any) {
     if(this._ability) {
       this.abilityIsActive = !this.abilityIsActive;
-      console.log(`beep 1: ${this._ability.abilityName} ${this.abilityIsActive}`);
+      console.log(`beep 1: ${this._ability.name} ${this.abilityIsActive}`);
       if(this._ability) {
         this.store.dispatch(enableAbilityToSelectedUnit({targetAbility: this._ability, newStatus: this.abilityIsActive}));
-        console.log(`1: ${this._ability.abilityName} is now ${this._ability.isActive} after dispatch`);
+        console.log(`1: ${this._ability.name} is now ${this._ability.isActive} after dispatch`);
       }
     }
   }

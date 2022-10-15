@@ -12,11 +12,26 @@ import {
   loadAllAbilitiesFailure, loadAllAbilitiesSuccess,
   loadAllUnits,
   loadAllUnitsFailure,
-  loadAllUnitsSuccess
+  loadAllUnitsSuccess,
+  loadCoreRules,
+  LOAD_CORE_RULES_SUCCESS,
+  LOAD_CORE_RULES_FAILURE
 } from "../store/app.actions";
 
 @Injectable()
 export class UnitsEffects {
+
+  loadCoreRules$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(loadCoreRules),
+      mergeMap(() => this.unitService.readRuleJSON()
+        .pipe(
+          map(rules => {console.log(rules); return ({ type: LOAD_CORE_RULES_SUCCESS, rules: rules })}),
+          catchError(() => of({type: LOAD_CORE_RULES_FAILURE}))
+        )
+      )
+    )
+  );
 
   loadAllUnits$ = createEffect(() =>
     this.actions$.pipe(

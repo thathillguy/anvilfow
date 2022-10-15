@@ -3,6 +3,11 @@ import { AppState, ArmyState } from './app.reducer';
  
 export const selectArmy = (state: AppState) => state.army;
  
+export const selectCoreRules = createSelector(
+  selectArmy,
+  (state: ArmyState) => state.coreRules
+);
+
 export const selectArmyUnits = createSelector(
   selectArmy,
 (state: ArmyState) => state.armyUnits

@@ -1,0 +1,209 @@
+[{
+	"name":"",
+	"abilityType":"",
+	"shortText":"",
+	"fullText":"",
+	"source":"",
+	"phase":[""]
+},
+{
+	"name":"Priority Roll",
+	"abilityType":"RULE",
+	"shortText":"Roll off for Priority (deciding who goes first). Ties are broken by the player who went first last round.",
+	"source":"Core Rules - 4.1",
+	"phase":["ROUNDSTART"]
+},
+{
+	"name":"Starting Command Points",
+	"abilityType":"RULE",
+	"shortText":"The player taking the first turn gets 1 CP, the player taking the second turn gets 2 CP.",
+	"source":"Core Rules - 4.1.1",
+	"phase":["ROUNDSTART"]
+},
+{
+	"name":"Command Points",
+	"abilityType":"RULE",
+	"shortText":"Each player gets 1 CP if their general is on the battlefield.",
+	"source":"Core Rules - 7.0",
+	"phase":["HERO"]
+},
+{
+	"name":"Heroic Actions",
+	"abilityType":"RULE",
+	"shortText":"Each player may pick one HERO to perform a heroic action",
+	"source":"Core Rules - 7.1",
+	"phase":["HERO"]
+},
+{
+	"name":"Heroic Leadership",
+	"abilityType":"HA",
+	"shortText":"Pick a HERO and roll a dice. +2 if your general has been slain. On a 4+, get 1 CP this turn for that HERO to issue a command.",
+	"fullText":"Pick 1 friendly HERO and roll a dice. Add 2 to the roll if your general has been slain. On a 4+, you receive 1 command point that can only be spent during that turn to allow that HERO to issue a command.",
+	"source":"Core Rules - 7.1",
+	"phase":["HERO"]
+},
+{
+	"name":"Heroic Willpower",
+	"abilityType":"HA",
+	"shortText":"Pick a HERO that is not a WIZARD. If it's the enemy hero phase, they can attempt to unbind 1 spell. If it's your hero phase, they can attempt to dispel 1 endless spell.",
+	"fullText":"Pick 1 friendly HERO that is not a WIZARD. If it is the enemy hero phase, that HERO can attempt to unbind 1 spell in that phase as if they were a WIZARD. If it is your hero phase, that HERO can attempt to dispel 1 endless spell in that phase as if they were a WIZARD (you can still only attempt to unbind or dispel the same spell or endless spell once in the same phase).",
+	"source":"Core Rules - 7.1",
+	"phase":["HERO"]
+},
+{
+	"name":"Their Finest Hour",
+	"abilityType":"HA",
+	"shortText":"Pick a HERO. Until end of turn, they get +1 to Wound rolls and +1 to Save rolls. Each hero can only use this once per battle.",
+	"fullText":"Pick 1 friendly HERO. Add 1 to wound rolls for attacks made by that HERO until the end of that turn, and add 1 to save rolls for attacks that target that HERO until the end of that turn. You cannot carry out this heroic action with the same HERO more than once in the same battle.",
+	"source":"Core Rules - 7.1",
+	"phase":["HERO"]
+},
+{
+	"name":"Heroic Recovery",
+	"abilityType":"HA",
+	"shortText":"Pick a HERO that is more that 3\" from all enemy units. Roll 2d6. If the roll is less than or equal to their Bravery, heal D3 wounds.",
+	"fullText":"Pick 1 friendly HERO that is more than 3\" from all enemy units and make a heroic recovery roll by rolling 2D6. If the roll is less than or equal to that HERO’s Bravery characteristic, you can heal up to D3 wounds allocated to that HERO.",
+	"source":"Core Rules - 7.1",
+	"phase":["HERO"]
+},
+{
+	"name":"Rally",
+	"abilityType": "CA",
+	"source":"Core Rules - 7.2",
+	"shortText":"Pick a unit more than 3\" from all enemy units. Roll 1 dice for each slain model from that unit. For each 6, return 1 slain model.",
+	"fullText":"You can use this command ability at the start of the hero phase. The unit that receives the command must be more than 3\" from all enemy units. Roll 1 dice for each slain model from that unit. For each 6, you can return 1 slain model to that unit.",
+	"phase":["HEROSTART"]
+},
+{
+	"name":"Normal Move",
+	"abilityType":"RULE",
+	"shortText":"Cannot move within 3\" of enemy units.",
+	"source":"Core Rules - 8.1",
+	"phase":["MOVE"]
+},
+{
+	"name":"Retreat",
+	"abilityType":"RULE",
+	"shortText":"Move up to the unit's move characteristic. Must end more than 3\" from all enemies. Cannot shoot or charge this turn.",
+	"source":"Core Rules - 8.2",
+	"phase":["MOVE"]
+},
+{
+	"name":"Run",
+	"abilityType":"RULE",
+	"shortText":"Roll a d6 and add it to the unit's move characteristic. Cannot shoot or charge this turn.",
+	"source":"Core Rules - 8.3",
+	"phase":["MOVE"]
+},
+{
+	"name":"At the Double",
+	"abilityType": "CA",
+	"source":"Core Rules - 8.4",
+	"shortText":"When you declare a unit will Run, use a 6 instead of making a run roll.",
+	"fullText":"You can use this command ability after you declare that a friendly unit will run. That unit must receive the command. The run roll is not made for that unit. Instead, 6\" is added to that unit’s Move characteristic in that phase. The unit is still considered to have run.",
+	"phase":["INMOVE"]
+},
+{
+	"name":"Redeploy",
+	"abilityType": "CA",
+	"source":"Core Rules - 8.4",
+	"shortText":"In the enemy movement phase, when an enemy unit finishes a normal move, run, or retreat. Recieving unit must be within 9\" of that enemy and more than 3\" from all enemies. You can make a D6\" move (must still remain more than 3\" from all enemies. Cannot shoot this turn.",
+	"fullText":"You can use this command ability in the enemy movement phase after an enemy unit finishes a normal move, run or retreat. The unit that receives the command must be within 9\" of that enemy unit and more than 3\" from all enemy units. You can make a D6\" move with the unit that receives the command, but it must finish the move more than 3\" from all enemy units and cannot shoot later in the turn.",
+	"phase":["INMOVE"]
+},
+{
+	"name":"Look Out, Sir!",
+	"abilityType": "RULE",
+	"source":"Core Rules - 10.1.2",
+	"shortText":"Subtract 1 from hit rolls that target a HERO that is within 3\" of a unit with 3 or more models. Doesn not apply to HEROes with 10+ wounds",
+	"fullText":"You must subtract 1 from the hit roll for an attack made with a missile weapon if the target is an enemy HERO within 3\" of an enemy unit that has 3 or more models. The Look Out, Sir! rule does not apply if the enemy HERO has a Wounds characteristic of 10 or more.",
+	"phase":["SHOOT"]
+},
+{
+	"name":"All-out Attack",
+	"abilityType": "CA",
+	"source":"Core Rules - 13.4",
+	"shortText":"+1 to Hit Rolls",
+	"fullText":"You can use this command ability when you pick a friendly unit to shoot in your shooting phase or fight in the combat phase. That unit must receive the command. Add 1 to hit rolls for attacks made by that unit until the end of that phase.",
+	"phase":["INSHOOT", "INCOMBAT"]
+},
+{
+	"name":"Forward to Victory",
+	"abilityType": "CA",
+	"source":"Core Rules - 11.2",
+	"shortText":"Re-roll a charge roll.",
+	"fullText":"You can use this command ability after you make a charge roll for a friendly unit. That unit must receive the command. You can re-roll the charge roll for that unit.",
+	"phase":["INCHARGE"]
+},
+{
+	"name":"Unleash Hell",
+	"abilityType": "CA",
+	"source":"Core Rules - 11.2",
+	"shortText":"Use when an enemy unit finishes a charge move. Pick a unit within 6\" of that unit and more than 3\" from all other enemy units. Shoot at that unit, but subtract 1 from hit rolls.",
+	"fullText":"You can use this command ability after an enemy unit finishes a charge move. The unit that receives the command must be within 6\" of that enemy unit and more than 3\" from all other enemy units. Models in the unit that receives the command that are within 6\" of the target unit can shoot in that phase, but when they do so, you must subtract 1 from hit rolls for their attacks and they can only target the unit that made the charge move.",
+	"phase":["INCHARGE"]
+},
+{
+	"name":"Monstrous Rampages",
+	"abilityType": "RULE",
+	"source":"Core Rules - 21.1",
+	"shortText":"At the end of the charge phase, each MONSTER can carry out a Monstrous Rampage. The player whose turn it is performs all of thiers first.",
+	"fullText":"At the end of the charge phase, each player can carry out 1 monstrous rampage from the table below with each friendly MONSTER. The player whose turn is taking place carries out all of their monstrous rampages first. The same player cannot carry out the same monstrous rampage more than once per phase.",
+	"phase":["CHARGEEND"]
+},
+{
+	"name":"Roar",
+	"abilityType": "MR",
+	"source":"Core Rules - 21.1",
+	"shortText":"Pick an enemy within 3\" and roll a dice. On a 3+, it can't issue or recieve commands in the combat phase.",
+	"fullText":"Pick 1 enemy unit within 3\" of this model and roll a dice. On a 3+, that unit cannot issue or receive commands in the following combat phase.",
+	"phase":["CHARGEEND"]
+},
+{
+	"name":"Stomp",
+	"abilityType": "MR",
+	"source":"Core Rules - 21.1",
+	"shortText":"Pick a non-MONSTER enemy within 3\" and roll a dice. On a 2+, it takes D3 mortal wounds.",
+	"fullText":"Pick 1 enemy unit within 3\" of this model that is not a MONSTER and roll a dice. On a 2+, that unit suffers D3 mortal wounds.",
+	"phase":["CHARGEEND"]
+},
+{
+	"name":"Titanic Duel",
+	"abilityType": "MR",
+	"source":"Core Rules - 21.1",
+	"shortText":"Pick an enemy MONSTER within 3\". Add +1 to Hit Rolls for this model's attacks targetting that MONSTER.",
+	"fullText":"Pick 1 enemy MONSTER within 3\" of this model. Add 1 to hit rolls for attacks made by this model that target that enemy MONSTER until the end of the following combat phase.",
+	"phase":["CHARGEEND"]
+},
+{
+	"name":"Smash to Rubble",
+	"abilityType": "MR",
+	"source":"Core Rules - 21.1",
+	"shortText":"Pick 1 faction terrain feature or defensible terrain feature within 3\" and roll a dice. On a 3+, it is demolished and the rules on its warscroll cannot be used for the rest of the battle.",
+	"fullText":"Pick 1 faction terrain feature or defensible terrain feature within 3\" of this model and roll a dice. On a 3+, the terrain feature is demolished if it was defensible (see 17.2.3), and the scenery rules on its warscroll cannot be used for the rest of the battle if it was a faction terrain feature.",
+	"phase":["CHARGEEND"]
+},
+{
+	"name":"All-out Defense",
+	"abilityType": "CA",
+	"source":"Core Rules - 11.2",
+	"shortText":"+1 to Save Rolls",
+	"fullText":"You can use this command ability when a friendly unit is picked as the target of an attack in the shooting or combat phase. That unit must receive the command. Add 1 to save rolls for attacks that target that unit until the end of that phase.",
+	"phase":["INSHOOT","INCOMBAT"]
+},
+{
+	"name":"Battleshock Test",
+	"abilityType": "RULE",
+	"source":"Core Rules - 15.1",
+	"shortText":"Roll a dice, add the number of models that were slain this turn. If that exceeds the Bravery, models equal to the difference flee.",
+	"fullText":"You must make a battleshock roll for each friendly unit that has to take a battleshock test. To make a battleshock roll, roll a dice and add the number of models in the unit that were slain in that turn to the roll. If the battleshock roll is greater than the unit’s Bravery characteristic, the battleshock test has been failed. If the test is failed, for each point by which the battleshock roll exceeds the unit’s Bravery characteristic, 1 model in that unit must flee. You decide which models flee. A model that flees is removed from play.",
+	"phase":["BSHOCK"]
+},
+{
+	"name":"Inspiring Presence",
+	"abilityType": "CA",
+	"source":"Core Rules - 15.3",
+	"shortText":"Skip a Battleshock test.",
+	"fullText":"You can use this command ability at the start of the battleshock phase. The unit that receives the command does not have to take battleshock tests in that phase.",
+	"phase":["BSHOCKSTART"]
+}]

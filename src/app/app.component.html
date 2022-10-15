@@ -9,7 +9,10 @@
 <!-- Toolbar -->
 <div class="container-fluid">
   <toolbar></toolbar>
-  <!-- <home></home> -->
+  <!--nav>
+    <a routerLink="/unitlibrary">Unit Library</a>
+  </nav>
+  <router-outlet></router-outlet-->
   <app-unit-library
     [units]="(allUnitData$ | async)"
   >
@@ -20,5 +23,7 @@
 	  [activeUnitID]="(activeUnitID$ | async)"
   >
   </app-units>
+  <app-reminders
+    [allRules]="(coreRuleData$ | async)">
+  </app-reminders>
 </div>
-<router-outlet></router-outlet>

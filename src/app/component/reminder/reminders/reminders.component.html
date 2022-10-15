@@ -1,0 +1,42 @@
+<h2>Reminders</h2>>
+<button (click)="prevPhase()">Previous Phase</button>Current Phase: {{allPhasesDisplay[currentPhase]}}<button (click)="nextPhase()">Next Phase</button>
+<ul>
+    <li *ngFor="let rule of currentPhaseRules">
+        <app-rule-detail [rule]="rule"></app-rule-detail>
+        <div *ngIf="rule.name =='Heroic Actions'">
+            <table>
+                <tr *ngFor="let action of heroicActions">
+                    <td>{{action.name}}</td>
+                    <td>{{action.shortText}}</td>
+                </tr>
+            </table>
+        </div>
+        <div *ngIf="rule.name =='Monstrous Rampages'">
+            <table>
+                <tr *ngFor="let action of monstrousRampages">
+                    <td><b>{{action.name}}</b></td>
+                    <td>{{action.shortText}}</td>
+                </tr>
+            </table>
+        </div>
+    </li>
+    <div *ngIf="abilitiesPhaseStart.length>0">
+        <h3>At the start of the {{allPhasesDisplay[currentPhase]}}</h3>
+        <div *ngFor="let ability of abilitiesPhaseStart">
+            <app-rule-detail [rule]="ability"></app-rule-detail>
+        </div>
+    </div>
+    <div *ngIf="abilitiesPhaseMiddle.length>0">
+        <h3>During the {{allPhasesDisplay[currentPhase]}}</h3>
+        <div *ngFor="let ability of abilitiesPhaseMiddle">
+            <app-rule-detail [rule]="ability"></app-rule-detail>
+        </div>
+    </div>
+    <div *ngIf="abilitiesPhaseEnd.length>0">
+        <h3>At the end of the {{allPhasesDisplay[currentPhase]}}</h3>
+        <div *ngFor="let ability of abilitiesPhaseEnd">
+            <app-rule-detail [rule]="ability"></app-rule-detail>
+        </div>
+    </div>
+</ul>
+

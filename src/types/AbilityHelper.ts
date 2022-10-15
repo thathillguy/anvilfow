@@ -12,7 +12,7 @@ export class AbilityHelper {
 
         console.log(`In findAbilityByName, there are ${abilityList.length} items`);
         for (const element of abilityList) {
-            if(name === element.abilityName) {
+            if(name === element.name) {
                 foundAbility = element;
                 break;
             }
@@ -24,14 +24,14 @@ export class AbilityHelper {
         let foundAbilities: Ability[] = new Array<Ability>();
 
         for (const ability of abilityList) {
-            if(ability.showOn.includes("OVERVIEW") && ability.phase.includes(phase)) {
+            if(ability.showOn && ability.showOn.includes("OVERVIEW") && ability.phase.includes(phase)) {
                 foundAbilities.push(ability);
             }
         }
         if(typeof unitList !== 'undefined'){
             for (const unit of unitList) {
                 for(const ability of unit.abilities){
-                    if(ability.showOn.includes("OVERVIEW") && ability.phase.includes(phase)) {
+                    if(ability.showOn && ability.showOn.includes("OVERVIEW") && ability.phase.includes(phase)) {
                         foundAbilities.push(ability);
                     }
                 }
@@ -44,7 +44,7 @@ export class AbilityHelper {
     static addAbilityToUnit(newAbility: Ability, unit: Unit) : Unit {
         let newUnit: Unit = {...unit};
         newUnit.abilities.push(newAbility);
-        if(newAbility.isActive) {
+        if(newAbility.isActive && newAbility.effects) {
             for (const effect of newAbility.effects) {
                 newUnit = AbilityHelper.addOrRemoveEffect(newUnit, effect, true);
             }
@@ -60,13 +60,15 @@ export class AbilityHelper {
         for (let i = 0; i < unit.abilities.length; i++) {
             let ability = unit.abilities[i];
             let newAbility: Ability = {...ability};
-            if(ability.abilityName === targetAbility.abilityName) {
+            if(ability.name === targetAbility.name) {
                 newAbility.isActive = newStatus;
                 if(ability.isActive === newStatus) {
                     return unit;
                 }
-                for (const effect of ability.effects) {
-                    newUnit = this.addOrRemoveEffect(newUnit, effect, newStatus);
+                if(ability.effects) {
+                    for (const effect of ability.effects) {
+                        newUnit = this.addOrRemoveEffect(newUnit, effect, newStatus);
+                    }
                 }
             }
             newAbilities.push(newAbility);

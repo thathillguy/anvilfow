@@ -1,8 +1,8 @@
 [{
-	"abilityName":"Aura of Khorne",
-	"abilitySource":"Slaves to Darkness Battle Trait",
-	"abilityShortText":"Reroll 1s to Hit for melee weapons",
-	"abilityFullText":"You can re-roll hit rolls of 1 for attacks made with melee weapons by friendly SLAVES TO DARKNESS KHORNE units wholly within 12\" of this model.",
+	"name":"Aura of Khorne",
+	"source":"Slaves to Darkness Battle Trait",
+	"shortText":"Reroll 1s to Hit for melee weapons",
+	"fullText":"You can re-roll hit rolls of 1 for attacks made with melee weapons by friendly SLAVES TO DARKNESS KHORNE units wholly within 12\" of this model.",
 	"phase":["INCOMBAT"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;KHORNE"],
 	"conditionText":"Wholly within 12\" of KHORNE hero?",
@@ -15,10 +15,10 @@
 		}]
 },
 {
-	"abilityName":"Aura of Khorne (General)",
-	"abilitySource":"Slaves to Darkness Battle Trait",
-	"abilityShortText":"+1 to wound for melee weapons",
-	"abilityFullText":"If this model is a general, add 1 to wound rolls for attacks made with melee weapons by friendly SLAVES TO DARKNESS KHORNE units wholly within 12\" of this model.",
+	"name":"Aura of Khorne (General)",
+	"source":"Slaves to Darkness Battle Trait",
+	"shortText":"+1 to wound for melee weapons",
+	"fullText":"If this model is a general, add 1 to wound rolls for attacks made with melee weapons by friendly SLAVES TO DARKNESS KHORNE units wholly within 12\" of this model.",
 	"phase":["INCOMBAT"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;KHORNE"],
 	"conditionText":"Wholly within 12\" of KHORNE general?",
@@ -31,10 +31,10 @@
 		}]
 },
 {
-	"abilityName":"Aura of Tzeentch",
-	"abilitySource":"Slaves to Darkness Battle Trait",
-	"abilityShortText":"Reroll 1s to save",
-	"abilityFullText":"You can re-roll save rolls of 1 for attacks that target friendly SLAVES TO DARKNESS TZEENTCH units wholly within 12\" of this model.",
+	"name":"Aura of Tzeentch",
+	"source":"Slaves to Darkness Battle Trait",
+	"shortText":"Reroll 1s to save",
+	"fullText":"You can re-roll save rolls of 1 for attacks that target friendly SLAVES TO DARKNESS TZEENTCH units wholly within 12\" of this model.",
 	"phase":["INSHOOT","INCOMBAT"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;TZEENTCH"],
 	"conditionText":"Wholly within 12\" of TZEENTCH hero?",
@@ -47,18 +47,18 @@
 		}]
 },
 {
-	"abilityName":"Aura of Tzeentch (General)",
-	"abilitySource":"Slaves to Darkness Battle Trait",
-	"abilityShortText":"Ignore spells and endless spells on 5+.",
-	"abilityFullText":"If this model is a general, each time a friendly SLAVES TO DARKNESS TZEENTCH unit wholly within 12\" of this model is affected by a spell or endless spell, you can roll a dice. If you do so, on a 5+, ignore the effects of that spell or endless spell on that unit.",
+	"name":"Aura of Tzeentch (General)",
+	"source":"Slaves to Darkness Battle Trait",
+	"shortText":"Ignore spells and endless spells on 5+.",
+	"fullText":"If this model is a general, each time a friendly SLAVES TO DARKNESS TZEENTCH unit wholly within 12\" of this model is affected by a spell or endless spell, you can roll a dice. If you do so, on a 5+, ignore the effects of that spell or endless spell on that unit.",
 	"phase":["ALL"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;TZEENTCH", "OVERVIEW"]
 },
 {
-	"abilityName":"Aura of Nurgle",
-	"abilitySource":"Slaves to Darkness Battle Trait",
-	"abilityShortText":"6 to wound with melee weapon = +1 damage",
-	"abilityFullText":"If the unmodified wound roll for an attack made with a melee weapon by a friendly SLAVES TO DARKNESS NURGLE unit wholly within 12\" of any friendly models with this ability is 6, add 1 to the damage inflicted by that attack.",
+	"name":"Aura of Nurgle",
+	"source":"Slaves to Darkness Battle Trait",
+	"shortText":"6 to wound with melee weapon = +1 damage",
+	"fullText":"If the unmodified wound roll for an attack made with a melee weapon by a friendly SLAVES TO DARKNESS NURGLE unit wholly within 12\" of any friendly models with this ability is 6, add 1 to the damage inflicted by that attack.",
 	"phase":["INCOMBAT"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;NURGLE"],
 	"conditionText":"Wholly within 12\" of NURGLE hero?",
@@ -71,18 +71,18 @@
 		}]
 },
 {
-	"abilityName":"Aura of Nurgle (General)",
-	"abilitySource":"Slaves to Darkness Battle Trait",
-	"abilityShortText":"-1 to hit rolls for missile weapons that target this",
-	"abilityFullText":"If this model is a general, subtract 1 from hit rolls for attacks made with missile weapons that target friendly SLAVES TO DARKNESS NURGLE units wholly within 12\" of this model.",
+	"name":"Aura of Nurgle (General)",
+	"source":"Slaves to Darkness Battle Trait",
+	"shortText":"-1 to hit rolls for missile weapons that target this",
+	"fullText":"If this model is a general, subtract 1 from hit rolls for attacks made with missile weapons that target friendly SLAVES TO DARKNESS NURGLE units wholly within 12\" of this model.",
 	"phase":["INSHOOT"],
 	"showOn":["OVERVIEW","UnitKeyword:SLAVES TO DARKNESS;NURGLE"]
 },
 {
-	"abilityName":"Aura of Slaanesh",
-	"abilitySource":"Slaves to Darkness Battle Trait",
-	"abilityShortText":"6 to hit with melee weapon = 2 hits",
-	"abilityFullText":"If the unmodified hit roll for an attack made with a melee weapon by a friendly SLAVES TO DARKNESS SLAANESH unit wholly within 12\" of this model is 6, that attack scores 2 hits on the target instead of 1. Make a wound and save roll for each hit.",
+	"name":"Aura of Slaanesh",
+	"source":"Slaves to Darkness Battle Trait",
+	"shortText":"6 to hit with melee weapon = 2 hits",
+	"fullText":"If the unmodified hit roll for an attack made with a melee weapon by a friendly SLAVES TO DARKNESS SLAANESH unit wholly within 12\" of this model is 6, that attack scores 2 hits on the target instead of 1. Make a wound and save roll for each hit.",
 	"phase":["INCOMBAT"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;SLAANESH"],
 	"conditionText":"Wholly within 12\" of SLAANESH hero?",
@@ -95,10 +95,10 @@
 		}]
 },
 {
-	"abilityName":"Aura of Slaanesh (General)",
-	"abilitySource":"Slaves to Darkness Battle Trait",
-	"abilityShortText":"Reroll run and charge rolls",
-	"abilityFullText":"If this model is a general, you can re-roll run and charge rolls for friendly SLAVES TO DARKNESS SLAANESH units wholly within 12\" of this model.",
+	"name":"Aura of Slaanesh (General)",
+	"source":"Slaves to Darkness Battle Trait",
+	"shortText":"Reroll run and charge rolls",
+	"fullText":"If this model is a general, you can re-roll run and charge rolls for friendly SLAVES TO DARKNESS SLAANESH units wholly within 12\" of this model.",
 	"phase":["INMOVE", "INCHARGE"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;SLAANESH"],
 	"conditionText":"Wholly within 12\" of SLAANESH general?",
@@ -117,18 +117,18 @@
 		}]
 },
 {
-	"abilityName":"Aura of Chaos Undivided",
-	"abilitySource":"Slaves to Darkness Battle Trait",
-	"abilityShortText":"Do not take battleshock tests",
-	"abilityFullText":"Do not take battleshock tests for friendly SLAVES TO DARKNESS UNDIVIDED units wholly within 12\" of this model.",
+	"name":"Aura of Chaos Undivided",
+	"source":"Slaves to Darkness Battle Trait",
+	"shortText":"Do not take battleshock tests",
+	"fullText":"Do not take battleshock tests for friendly SLAVES TO DARKNESS UNDIVIDED units wholly within 12\" of this model.",
 	"phase":["INBSHOCK"],
 	"showOn":["OVERVIEW"]
 },
 {
-	"abilityName":"Aura of Chaos Undivided (General)",
-	"abilitySource":"Slaves to Darkness Battle Trait",
-	"abilityShortText":"6+ Ward",
-	"abilityFullText":"If this model is a general, roll a dice each time you allocate a wound or mortal wound to a friendly SLAVES TO DARKNESS UNDIVIDED unit wholly within 12\" of this model. On a 6, that wound or mortal wound is negated",
+	"name":"Aura of Chaos Undivided (General)",
+	"source":"Slaves to Darkness Battle Trait",
+	"shortText":"6+ Ward",
+	"fullText":"If this model is a general, roll a dice each time you allocate a wound or mortal wound to a friendly SLAVES TO DARKNESS UNDIVIDED unit wholly within 12\" of this model. On a 6, that wound or mortal wound is negated",
 	"phase":["ALL"],
 	"showOn":["UnitKeyword:SLAVES TO DARKNESS;UNDIVIDED"]
 }]
